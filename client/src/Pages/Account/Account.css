@@ -1,0 +1,147 @@
+.profileWrapper {
+  width: 100%;
+}
+.accountHeader {
+  height: 45vh;
+  width: 100%;
+  background: #000;
+  background-image: url("../../assets/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+.nameEmail {
+  margin: 30px 0 0 60px;
+}
+.username {
+  font-size: 25px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+  text-transform: capitalize;
+  text-align: center;
+}
+.avatarText {
+  font-size: 35px;
+  color: #000;
+}
+.useremail {
+  color: #333;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 3px;
+}
+.userProfile {
+  position: absolute;
+  bottom: 0;
+  transform: translate(0, 50%);
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 3px solid #000;
+  border-radius: 100px;
+  background: #fff;
+}
+.logout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10vh;
+}
+.emptyFill {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-inline: 2vw;
+}
+.logout button {
+  color: red;
+  background: transparent;
+  padding: 20px 30px;
+  border: 1px solid lightslategray;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+.logout button:hover {
+  background: red;
+  color: #fff;
+}
+
+.accountOptionsWrapper {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.accountOptions {
+  padding-inline: 5vw;
+  padding-block: 2vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.block {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #aaa;
+  height: 100px;
+  width: 300px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.block:hover {
+  box-shadow: 5px 5px 0 0 #000;
+}
+.yourOrders {
+  margin-left: 15px;
+  text-align: left;
+}
+.orderHead {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+}
+.orderSummary {
+  font-size: 12px;
+  color: #777;
+  font-weight: 400;
+}
+.optionsImg {
+  height: 50px;
+  width: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .profileWrapper {
+    margin-bottom: 20vh;
+  }
+  .accountOptions {
+    margin-top: 7vh;
+  }
+  .logout {
+    margin-top: 5vh;
+  }
+  .createdAt {
+    font-size: 14px;
+  }
+  .userProfile {
+    left: 20px;
+  }
+}

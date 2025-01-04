@@ -1,0 +1,70 @@
+.titles {
+  width: 100%;
+  .title {
+    border-bottom: 1px solid #5d5d5d;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s ease-out;
+
+    .Twrapper:hover p {
+      color: #000;
+      &:nth-of-type(2) {
+        color: #000;
+      }
+    }
+    .Twrapper {
+      display: flex;
+      padding-inline: 5%;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        display: inline-block;
+        color: #b7ab98;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 5vmax;
+        line-height: 7.5vw;
+        margin: 0px;
+        position: relative;
+        z-index: 2;
+        &:nth-of-type(2) {
+          display: block;
+          position: absolute;
+          color: #2b2b2b;
+          top: 0;
+          z-index: 1;
+        }
+      }
+
+      .Tarrow {
+        font-size: 3.5rem;
+        color: #000;
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 100%;
+      }
+      @media screen and (max-width: 756px) {
+        .Tarrow {
+          font-size: 2rem;
+          padding: 5px 10px;
+        }
+        p {
+          font-size: 3.5vmax;
+        }
+      }
+    }
+    .Twrapper:hover .Tarrow {
+      color: #fff;
+      background: #000;
+      transition: all 0.7s ease;
+    }
+    @media screen and (max-width: 756px) {
+      .Twrapper {
+        margin-block: 20px;
+      }
+    }
+  }
+}

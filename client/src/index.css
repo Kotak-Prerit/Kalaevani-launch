@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@font-face {
+  font-family: "Futura LT Pro Book";
+  src: url(./assets/FuturaLTProBold.otf);
+}
+
+@font-face {
+  font-family: "Apercu";
+  src: url(./assets/ApercuFontFamily/ApercuRegular.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.align-center {
+  display: flex;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.white {
+  color: #fff;
+}
+.black {
+  color: #000;
+}
+.Apercu {
+  font-family: "Apercu", sans-serif;
+}
+.futuraLt {
+  font-family: "Futura LT Pro Book", sans-serif;
+}
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.padauk {
+  font-family: "Padauk", sans-serif;
+}
+.bebas {
+  font-family: "Bebas Neue", sans-serif;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+.flex {
+  display: flex;
+}
+.hnav-100 {
+  height: calc(100vh - 100px);
+}
+.td-none {
+  text-decoration: none;
+  cursor: pointer;
+}

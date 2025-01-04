@@ -1,0 +1,82 @@
+.sidebar {
+  padding: 1rem 0.5rem;
+  background: #1e1f26;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+}
+.dashboardLogo {
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+}
+.logoTxt {
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 0.95;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+.ds-icon {
+  color: #6366f1;
+}
+.pr-icon {
+  color: #6c52b8;
+}
+.odr-icon {
+  color: #ec4899;
+}
+.usr-icon {
+  color: #6ee7b7;
+}
+.rv-icon {
+  color: #f59e0b;
+}
+.d-link {
+  text-decoration: none;
+  color: #fff;
+  margin-bottom: 15px;
+  list-style: none;
+}
+.d-link p,
+.d-link button {
+  margin-bottom: 2rem;
+  padding-inline: 1rem;
+  align-items: flex-end;
+  gap: 10px;
+  line-height: 1;
+  font-size: 18px;
+}
+.d-link button {
+  border: none;
+  background: transparent;
+  margin-bottom: 0;
+  gap: 10px;
+}
+.d-link button:focus {
+  outline: none;
+}
+.product-dropdown.visible {
+  display: block;
+}
+
+.product-dropdown.hidden {
+  display: none;
+}
+.product-dropdown {
+  padding-left: 40px;
+  list-style: none;
+  padding-top: 20px;
+}
+.product-dropdown li a {
+  text-decoration: none;
+  color: #fff;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.product-dd {
+  margin-bottom: 25px;
+}

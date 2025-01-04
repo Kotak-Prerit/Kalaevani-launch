@@ -1,0 +1,30 @@
+.productVidWrapper {
+  width: 100%;
+  margin: 20px;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* z-index: -100; */
+  position: relative;
+}
+audio::-webkit-media-controls-timeline,
+video::-webkit-media-controls-timeline {
+  display: none;
+}
+video {
+  width: 100%;
+  clip-path: polygon(
+    10% 0,
+    90% 0,
+    100% 10%,
+    100% 95%,
+    95% 100%,
+    5% 100%,
+    0 95%,
+    0 10%
+  );
+}

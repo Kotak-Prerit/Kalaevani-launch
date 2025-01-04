@@ -1,0 +1,119 @@
+.productListContainer {
+  position: absolute;
+  right: 0;
+  width: 80%;
+  background: #131417;
+  top: 0;
+  min-height: 100vh;
+}
+.dashboardHeading {
+  text-align: left;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: auto;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.MuiDataGrid-columnHeaderTitle {
+  color: #fff;
+}
+.MuiDataGrid-columnHeader {
+  background: #1e1f26;
+}
+.productListTable {
+  margin: 20px;
+  background: #1e1f26;
+  border: 1px solid #000;
+}
+.MuiDataGrid-main {
+  color: white;
+}
+.productEdit {
+  height: 100%;
+}
+.productEditIcon {
+  text-decoration: none;
+  color: royalblue;
+  font-size: 20px;
+}
+.productDeleteBtnIcon {
+  color: red;
+  font-size: 20px;
+}
+.productDeleteBtn {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.MuiTablePagination-toolbar {
+  color: #fff;
+}
+.MuiTablePagination-input svg {
+  color: #fff;
+}
+.MuiTablePagination-actions button svg {
+  color: #fff;
+}
+/* Assuming these styles are in Product.css */
+
+.productDeleteBtn {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.productDeleteBtnIcon {
+  font-size: 20px;
+}
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background-color: white;
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 70%;
+}
+.popup h2 {
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.popupButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.popupYesBtn,
+.popupNoBtn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popupYesBtn {
+  background-color: green;
+  color: white;
+}
+
+.popupNoBtn {
+  background-color: gray;
+  color: white;
+}

@@ -1,0 +1,98 @@
+#hero-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0.5) 200%
+  );
+  margin-top: -12vh;
+}
+
+.hero {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1,
+.hero h2 {
+  color: transparent;
+  background: url("https://i.pinimg.com/originals/1f/a8/4f/1fa84f1d7d4ad96dd51f81804847967a.gif")
+    no-repeat;
+  background-size: cover;
+  background-clip: initial;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.hero h1 {
+  z-index: 2;
+  font-size: 8vw;
+}
+
+.hero h2 {
+  z-index: 2;
+  font-size: 10vw;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.hero-buttons {
+  position: absolute;
+  bottom: 15px;
+  z-index: 2;
+  right: 15px;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 0;
+}
+
+.hero-buttons button {
+  background: #000;
+  border-radius: 100px;
+  padding: 15px 18px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.colorIcon {
+  font-size: 18px;
+  color: #fff;
+}
+.hero-buttons button:hover {
+  background: #fff;
+  border: 1px solid #000;
+}
+.hero-buttons button:hover .colorIcon {
+  color: #000;
+}
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 11vw;
+  }
+  .hero h2 {
+    font-size: 12.7vw;
+  }
+}

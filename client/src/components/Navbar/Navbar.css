@@ -1,0 +1,413 @@
+.menuOpen {
+  height: 102vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2.5vw;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  transition: all 0.5s ease;
+  background: #000;
+  overflow: hidden;
+}
+
+.menuClose {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2.6vw;
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.logoWrapper {
+  transition: all 1s;
+  position: relative;
+  overflow: hidden;
+  z-index: 9;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
+  animation: fadeUp 0.7s ease;
+  margin-top: 10px;
+  mix-blend-mode: color-burn;
+}
+
+.logoOpen {
+  position: fixed;
+  top: 2vh;
+  height: 50px;
+}
+
+.vanish {
+  display: none;
+}
+
+.menuLogo {
+  display: none;
+}
+
+.Fixed,
+.menuFixed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 45px;
+  border-radius: 50Q;
+  padding: 0 15px;
+  background: #fff;
+  border: 1px solid lightgray;
+}
+
+.menuFixed {
+  position: fixed;
+  top: 2vh;
+  right: 2.5vw;
+}
+
+.cart,
+.menuCart,
+.account,
+.menuAccount {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.account,
+.menuAccount {
+  height: 40px;
+  margin: 20px 0 0 5px;
+}
+
+.cart {
+  color: #000;
+}
+
+.menuCart {
+  color: #000;
+}
+
+.cartLink {
+  height: 100%;
+  position: relative;
+}
+.addedToCart {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background: #000;
+  top: 3px;
+  right: 3px;
+  border-radius: 50px;
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+}
+.cart:hover,
+.menuCart:hover {
+  transform: rotate(-15deg);
+}
+.shopLink,
+.shop {
+  display: none;
+}
+.menu {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  width: auto;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.menu .inactive,
+.menu .active {
+  height: 1px;
+  width: 20px;
+  margin-block: 1.5px;
+}
+
+.menu .inactive {
+  background: #000;
+}
+
+.menu .active {
+  background: #000;
+}
+
+.menu:hover .inactive:nth-child(1) {
+  margin-block: 2px;
+  transition: 0.5s ease;
+}
+
+.menu:hover .inactive:nth-child(2) {
+  margin-block: 2px;
+  transition: 0.5s ease;
+}
+
+.menu .active:nth-child(1) {
+  transform: rotate(45deg);
+  margin: 0;
+}
+
+.menu .active:nth-child(2) {
+  transform: rotate(-45deg);
+  margin: 0;
+}
+
+.menuClose > .links > .anchor {
+  color: #fff;
+}
+
+.menuLinks {
+  position: absolute;
+  display: flex;
+  height: fit-content;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  right: 2vw;
+  bottom: 5vh;
+  font-family: "Poppins", serif;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.menuLinksActive {
+  font-size: 3vw;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bolder;
+  line-height: 1;
+}
+.menuLinksActive:hover {
+  color: #ff9500;
+  transition: all 0.3s ease;
+}
+.links,
+.linksActive {
+  font-size: 4.5vw;
+  animation: fadeUp 0.7s ease-in-out 0.1s;
+}
+
+.searchBar,
+.menuSearchBar {
+  margin-right: 10px;
+  background: #fff;
+  border: 1px solid lightgray;
+  height: 45px;
+  width: 45px;
+  border-radius: 50Q;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menuSocialActive a {
+  font-size: 20px;
+}
+.menuSearchBar {
+  position: absolute;
+  top: 15px;
+  right: 235px;
+  color: #000;
+}
+
+.searchBar {
+  font-size: 18px;
+  color: #000;
+}
+
+.navBarRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 1vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+}
+.menu-socials {
+  position: absolute;
+  bottom: 2.5vw;
+  left: 2.5vw;
+}
+.menu-socials h1 {
+  font-weight: 500;
+  color: #ffffffa4;
+  margin-bottom: 10px;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 800;
+}
+.socialLinks {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.socialLinks a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+}
+.socialLinks a:hover {
+  text-decoration: underline;
+}
+.socialLinks a:nth-child(1):hover {
+  color: #ff3589;
+}
+.socialLinks a:nth-child(2):hover {
+  color: royalblue;
+}
+.socialLinks a:nth-child(3):hover {
+  color: #00b900;
+}
+.socialLinks a:nth-child(4):hover {
+  color: #295eff;
+}
+.socialLinks a:nth-child(5):hover {
+  color: red;
+}
+
+.menuLinksActive p {
+  font-size: 60px;
+}
+
+@media (min-width: 410px) and (max-width: 768px) {
+  .menuLinksActive p {
+    font-size: 7vw;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .navBarRight {
+    position: fixed;
+    bottom: 2vh;
+    left: 3vw;
+    width: 95vw;
+  }
+  .searchBar {
+    border: 1px solid lightgray;
+  }
+
+  .account,
+  .menuAccount {
+    margin: 20px 0 0 20px;
+  }
+  .menuClose {
+    height: 10vh;
+  }
+  .links .anchor,
+  .links .menuAnchor {
+    display: none;
+  }
+
+  .logo {
+    margin-left: 0;
+    height: 5vh;
+  }
+
+  .Fixed {
+    margin: 5px 0 0 0;
+    top: 10px;
+    right: 10px;
+    width: 78vw;
+    border: 1px solid lightgray;
+  }
+
+  .shopLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    position: relative;
+  }
+  .shop {
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+  }
+
+  .menuFixed {
+    top: 20px;
+    right: 20px;
+    /* border-radius: 100px 100px 0 100px; */
+  }
+
+  .menuLinks {
+    right: 5vw;
+    top: 25vh;
+  }
+
+  .links,
+  .linksActive {
+    font-size: 30px;
+  }
+
+  .menuLinksActive p {
+    font-size: 9vw;
+    line-height: 1;
+  }
+
+  .menuSearchBar {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    border-radius: 100px;
+  }
+  .menu-socials {
+    left: 5vw;
+    right: auto;
+    bottom: 100px;
+  }
+  .menu-socials h1 {
+    font-size: 20px;
+  }
+  .socialLinks {
+    align-items: flex-start;
+  }
+}
+@media (min-width: 575px) and (max-width: 800px) {
+  .menu-socials {
+    right: auto;
+    left: 2.5vw;
+    top: 15vh;
+    bottom: auto;
+  }
+  .socialLinks {
+    align-items: flex-start;
+  }
+}
