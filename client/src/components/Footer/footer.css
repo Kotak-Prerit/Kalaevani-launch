@@ -17,7 +17,16 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
-
+.anchorBtn {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+.anchorBtn:hover {
+  text-decoration: underline;
+}
 .rs,
 .os,
 .osLinks,

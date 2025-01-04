@@ -4,6 +4,7 @@ const app = express();
 const errorMiddleware = require("./middleware/error");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const path = require("path");
 
 app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
@@ -18,6 +19,12 @@ const order = require("./routes/orderRoute");
 app.use("/api/v1", products);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+});
 
 // Middlewares
 app.use(errorMiddleware);

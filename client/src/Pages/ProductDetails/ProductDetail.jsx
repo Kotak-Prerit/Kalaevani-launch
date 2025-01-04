@@ -31,6 +31,7 @@ import {
 } from "@mui/material";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import logo from "../../assets/kalaevaniBlack.png";
+import sizeChart from "../../assets/sizechart.png";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -97,6 +98,7 @@ const ProductDetails = () => {
   };
 
   const [popupIsOpen, setPopupIsOpen] = useState(false);
+  const [sizeChartIsOpen, setSizeChartIsOpen] = useState(false);
   const [selectedMaterial, setSelectedMaterial] = useState("");
 
   const openPopup = (material) => {
@@ -106,6 +108,14 @@ const ProductDetails = () => {
 
   const closePopup = () => {
     setPopupIsOpen(false);
+  };
+
+  const openSizeChart = () => {
+    setSizeChartIsOpen(true);
+  };
+
+  const closeSizeChart = () => {
+    setSizeChartIsOpen(false);
   };
 
   const addToCartHandler = () => {
@@ -200,7 +210,21 @@ const ProductDetails = () => {
                 ({product.numberOfReviews} Reviews)
               </span>
             </div>
+            <div className="sizeImage">
+              <button onClick={openSizeChart}>size chart</button>
+            </div>
           </div>
+          {sizeChartIsOpen && (
+            <div className="sizeChartPopup">
+              <div className="popupOverlay" onClick={closeSizeChart}></div>
+              <div className="popupContent">
+                <button className="closeButton" onClick={closeSizeChart}>
+                  X
+                </button>
+                <img src={sizeChart} alt="Size Chart" />
+              </div>
+            </div>
+          )}
           <section className="sp_Hero">
             <div className="showcase_img_Container">
               <div className="showcase_img">

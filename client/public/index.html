@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+
       * {
         margin: 0;
         padding: 0;
@@ -21,16 +23,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-image: url("loader.gif");
-        background-size: 50%;
-        background-position: center;
-        background: #000;
+        font-family: "Montserrat", sans-serif;
       }
     </style>
     <title>KALAEVANI</title>
   </head>
   <body onload="loader()">
-    <div class="loader-main" id="loading"></div>
+    <div class="loader-main" id="loading">Loading...</div>
     <div id="root"></div>
 
     <script>
