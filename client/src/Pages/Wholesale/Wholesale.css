@@ -6,7 +6,9 @@
   gap: 16px;
   padding: 2.5vw;
 }
-
+.wholesale-wrapper {
+  padding-inline: 15px;
+}
 .grid-item {
   display: flex;
   align-items: center;
@@ -315,5 +317,21 @@
 @media screen and (max-width: 768px) {
   .faq-container {
     width: 90%;
+  }
+  .image-container {
+    width: 100%;
+  }
+  .steps-content {
+    display: block;
+  }
+  .grid-item span {
+    font-size: 14px;
+  }
+  .grid-container {
+    grid-template-rows: repeat(2, 100px);
+  }
+  .Ws-arrow {
+    font-size: 16px;
+    padding: 7px;
   }
 }

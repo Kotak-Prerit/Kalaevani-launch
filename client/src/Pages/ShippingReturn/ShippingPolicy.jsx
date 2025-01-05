@@ -23,15 +23,7 @@ const ShippingPolicy = () => {
                   working days. However, custom and made to order pieces takes
                   7-10 working days.
                 </li>
-                <li>
-                  Domestic orders -
-                  <p className="spacing">
-                    Prepaid orders are eligible for free shipping
-                  </p>
-                  <p className="spacing">
-                    Orders placed on COD will attract a charge of 149/-
-                  </p>
-                </li>
+
                 <li>
                   International orders -
                   <p className="spacing">

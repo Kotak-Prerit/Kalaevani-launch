@@ -15,24 +15,26 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const increaseQauntity = (id, quantity, stock) => {
+  const increaseQauntity = (id, quantity, size) => {
     const newQty = quantity + 1;
-    if (stock <= quantity) {
+    if (size <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty, size));
+    // window.location.reload();
   };
 
-  const decreaseQauntity = (id, quantity) => {
+  const decreaseQauntity = (id, quantity, size) => {
     const newQty = quantity - 1;
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, newQty, size));
+    // window.location.reload();
   };
 
-  const deleteCartItems = (id) => {
-    dispatch(removeItemsFromCart(id));
+  const deleteCartItems = (id, size) => {
+    dispatch(removeItemsFromCart(id, size));
   };
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,

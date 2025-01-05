@@ -1,11 +1,15 @@
 import React from "react";
-import Bulk from "../../assets/bulkOrders.webp";
 
 const BulkOrder = () => {
   return (
     <div className="bulk-order-container">
       <div className="image-section">
-        <img src={Bulk} alt="Bulk Order Process" />
+        <img
+          src={
+            "https://res.cloudinary.com/dqzqrsuli/image/upload/v1736032069/bulkOrders_xaam3k.png"
+          }
+          alt="Bulk Order Process"
+        />
       </div>
       <div className="info-section poppins flex-center">
         <h3>What's Included</h3>

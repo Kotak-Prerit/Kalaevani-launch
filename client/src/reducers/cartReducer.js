@@ -12,15 +12,18 @@ export const cartReducer = (
     case ADD_TO_CART:
       const item = action.payload;
 
+      // Check if an item with the same product and size exists
       const isItemExist = state.cartItems.find(
-        (i) => i.product === item.product
+        (i) => i.product === item.product && i.size === item.size
       );
 
       if (isItemExist) {
         return {
           ...state,
           cartItems: state.cartItems.map((i) =>
-            i.product === isItemExist.product ? item : i
+            i.product === isItemExist.product && i.size === isItemExist.size
+              ? item
+              : i
           ),
         };
       } else {
@@ -33,7 +36,10 @@ export const cartReducer = (
     case REMOVE_CART_ITEM:
       return {
         ...state,
-        cartItems: state.cartItems.filter((i) => i.product !== action.payload),
+        cartItems: state.cartItems.filter(
+          (i) =>
+            !(i.product === action.payload.id && i.size === action.payload.size)
+        ),
       };
 
     case SAVE_SHIPPING_INFO:

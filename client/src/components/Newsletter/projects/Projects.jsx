@@ -15,7 +15,7 @@ const data = [
     speed: 0.7,
   },
   {
-    title: "Term & condition",
+    title: "Terms & condition",
     redirect: "/terms",
     speed: 0.72,
   },

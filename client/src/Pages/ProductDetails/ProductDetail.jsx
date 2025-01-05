@@ -163,8 +163,8 @@ const ProductDetails = () => {
     return null;
   }
 
-  const showcaseImage = product.images[6] ? product.images[6].url : null;
-  const productImage = product.images[7] ? product.images[7].url : null;
+  const showcaseImage = product.images[4] ? product.images[4].url : null;
+  const productImage = product.images[5] ? product.images[5].url : null;
 
   const scrollToProductDetail = () => {
     productDetailRef.current.scrollIntoView({ behavior: "smooth" });
@@ -182,7 +182,7 @@ const ProductDetails = () => {
     if (product.Stock < 5 && product.Stock < 0) {
       return <p className="red">Last 5 left</p>;
     } else if (product.Stock > 5) {
-      return <p className="green">{product.Stock} left</p>;
+      return <p className="green">InStock</p>;
     } else if (product.Stock === 0) {
       return <p className="red">Out of stock</p>;
     }
@@ -375,13 +375,10 @@ const ProductDetails = () => {
                     <p className="overallRating">
                       {product.ratings.toFixed(1)}
                     </p>
-                    <div
-                      className="reviewRatings flex-center"
-                      style={{ gap: "5px" }}
-                    >
+                    <div className="reviewRatings ">
                       <ReactStars
                         {...options}
-                        size={window.innerWidth < 600 ? 30 : 45}
+                        size={window.innerWidth < 600 ? 15 : 40}
                       />
                       <span className="num-ratings">
                         Based on {product.numberOfReviews} Reviews

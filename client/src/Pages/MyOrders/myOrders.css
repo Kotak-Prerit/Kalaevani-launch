@@ -24,26 +24,33 @@
 }
 
 .myOrdersTable div {
-  font: 300 1vmax "Poppins";
+  font: 300 1vmax "Apercu";
   color: rgba(0, 0, 0, 0.678);
   border: none;
+  text-align: center;
 }
 
 .myOrdersTable a {
   color: rgba(0, 0, 0, 0.527);
   transition: all 0.5s;
 }
-
+.MuiDataGrid-menuIcon,
+.MuiDataGrid-iconButtonContainer {
+  display: none !important;
+}
 .MuiDataGrid-columnHeader {
   background-color: #333;
   padding: 1vmax !important;
 }
+
 .greenColor {
   color: #00d000 !important;
 }
+
 .redColor {
   color: red !important;
 }
+
 .MuiDataGrid-columnHeader div {
   color: rgb(255, 255, 255);
   font: 500 1.1vmax "Poppins" !important;
@@ -53,6 +60,16 @@
   display: none !important;
 }
 
+/* Make the table scrollable on smaller screens */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.downloadBtn {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 600px) {
   .myOrdersPage {
     padding: 0;
@@ -60,8 +77,11 @@
   }
 
   #myOrdersHeading {
-    font: 400 2.2vmax "Poppins";
+    font: 400 10px "Poppins";
     padding: 4vw;
+  }
+  #myOrdersHeading svg {
+    display: none;
   }
 
   .myOrdersTable div {
@@ -73,6 +93,11 @@
   }
 
   .MuiDataGrid-columnHeader div {
-    font: 500 5vw "Poppins" !important;
+    font: 500 10px "Poppins" !important;
+  }
+
+  .MuiDataGrid-cell {
+    font-size: 10px !important;
+    padding: 4vw;
   }
 }

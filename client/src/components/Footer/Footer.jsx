@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { BsYoutube } from "react-icons/bs";
@@ -8,11 +8,21 @@ import "./footer.css";
 import Logo from "../../assets/kalaevaniWhite.png";
 import Loader from "../Loader/Loader";
 import { useSelector } from "react-redux";
+import sizeChart from "../../assets/sizechart.png";
 
 export default function Footer() {
   const navigate = useNavigate();
 
   const { isAuthenticated, loading } = useSelector((state) => state.user);
+  const [sizeChartIsOpen, setSizeChartIsOpen] = useState(false);
+
+  const openSizeChart = () => {
+    setSizeChartIsOpen(true);
+  };
+
+  const closeSizeChart = () => {
+    setSizeChartIsOpen(false);
+  };
 
   const authenticate = () => {
     if (isAuthenticated) {
@@ -59,9 +69,9 @@ export default function Footer() {
                   <Link className="anchor" to="/contact">
                     Contact Us
                   </Link>
-                  <Link className="anchor" to="/">
+                  <button className="anchorBtn" to="" onClick={openSizeChart}>
                     Size Chart
-                  </Link>
+                  </button>
                   <Link className="anchor" to="/privacy">
                     Privacy Policy
                   </Link>
@@ -73,6 +83,17 @@ export default function Footer() {
                   </Link>
                 </div>
               </div>
+              {sizeChartIsOpen && (
+                <div className="sizeChartPopup">
+                  <div className="popupOverlay" onClick={closeSizeChart}></div>
+                  <div className="popupContent">
+                    <button className="closeButton" onClick={closeSizeChart}>
+                      X
+                    </button>
+                    <img src={sizeChart} alt="Size Chart" />
+                  </div>
+                </div>
+              )}
               <div className="others">
                 <p className="heading">Catch Up</p>
                 <div className="details">

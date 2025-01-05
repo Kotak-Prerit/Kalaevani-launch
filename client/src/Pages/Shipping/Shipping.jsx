@@ -3,7 +3,6 @@ import "./Shipping.css";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
 import MetaData from "../../Meta/metaData";
-import { State, City } from "country-state-city";
 import CheckoutSteps from "../../components/checkoutStepper/CheckoutSteps";
 import { toast } from "react-toastify";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -19,27 +18,12 @@ const Shipping = () => {
   const [street, setStreet] = useState(shippingInfo.street || "");
   const [zipCode, setZipCode] = useState(shippingInfo.zipCode || "");
   const [info, setInfo] = useState(shippingInfo.info || "");
-  const states = State.getStatesOfCountry("IN");
+  // const states = State.getStatesOfCountry("IN");
   const [selectedState, setSelectedState] = useState(shippingInfo.state || "");
-  const [cities, setCities] = useState([]);
+  // const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState(shippingInfo.city || "");
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo || "");
   const country = "India";
-
-  const handleStateChange = (e) => {
-    const stateCode = e.target.value;
-    setSelectedState(stateCode);
-
-    // Fetch cities for the selected state
-    const stateCities = City.getCitiesOfState("IN", stateCode);
-    setCities(stateCities);
-    setSelectedCity(""); // Reset city selection
-  };
-
-  // Handle city selection
-  const handleCityChange = (e) => {
-    setSelectedCity(e.target.value);
-  };
 
   const handleInputChange = async (e) => {
     const value = e.target.value;
@@ -53,18 +37,36 @@ const Shipping = () => {
           const response = await axios.get(
             `https://api.postalpincode.in/pincode/${value}`
           );
-          const postOffice = response.data[0]?.PostOffice?.[0]?.Name;
+          const postState = response.data[0]?.PostOffice?.[0]?.State;
 
-          if (postOffice) {
-            setInfo(postOffice);
+          if (postState) {
+            setSelectedState(postState);
           } else {
-            setInfo("No information found for this zipcode");
+            setSelectedState("No information found for this zipcode");
           }
         } catch (error) {
-          setInfo("Error fetching data. Please try again.");
+          setSelectedState("Error fetching data. Please try again.");
         }
       } else {
-        setInfo("Type valid zipcode");
+        setSelectedState("Type valid State");
+      }
+      if (value.length === 6) {
+        try {
+          const response = await axios.get(
+            `https://api.postalpincode.in/pincode/${value}`
+          );
+          const district = response.data[0]?.PostOffice?.[0]?.District;
+
+          if (district) {
+            setSelectedCity(district);
+          } else {
+            setSelectedCity("No information found for this zipcode");
+          }
+        } catch (error) {
+          setSelectedCity("Error fetching data. Please try again.");
+        }
+      } else {
+        setSelectedCity("Type valid City");
       }
     }
   };
@@ -157,48 +159,41 @@ const Shipping = () => {
                 <p className="addressText">Enter Landmark</p>
               </div>
               <div className="passwordWrapper">
-                <p className="landmarkText poppins">{info}</p>
+                <input
+                  type="text"
+                  placeholder="Landmark"
+                  required
+                  value={info}
+                  onChange={(e) => setInfo(e.target.value)}
+                />
               </div>
             </div>
             <div className="stateContainer">
               <div className="state">
-                <p className="stateText">Select State</p>
+                <p className="stateText">Enter City</p>
               </div>
               <div className="passwordWrapper">
-                <select
-                  id="state"
+                <input
+                  type="text"
+                  placeholder="city"
                   required
-                  value={selectedState}
-                  onChange={handleStateChange}
-                >
-                  <option value="">-- Select State --</option>
-                  {states.map((state) => (
-                    <option key={state.isoCode} value={state.isoCode}>
-                      {state.name}
-                    </option>
-                  ))}
-                </select>
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                />
               </div>
             </div>
             <div className="cityContainer">
               <div className="city">
-                <p className="cityText">Enter City</p>
+                <p className="cityText">Enter State</p>
               </div>
               <div className="passwordWrapper">
-                <select
-                  id="city"
-                  value={selectedCity}
-                  onChange={handleCityChange}
+                <input
+                  type="text"
+                  placeholder="Landmark"
                   required
-                  disabled={!selectedState} // Disable if no state is selected
-                >
-                  <option value="">-- Select City --</option>
-                  {cities.map((city) => (
-                    <option key={city.isoCode} value={city.name}>
-                      {city.name}
-                    </option>
-                  ))}
-                </select>
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                />
               </div>
             </div>
 

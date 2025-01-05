@@ -6,7 +6,7 @@ function Sale({ dataArray, speed, direction }) {
   return (
     <div className="marquee">
       <Marquee autoFill>
-        <p className="poppins dst">Beta Version Launched</p>
+        <p className="poppins dst">free delivery for first month</p>
       </Marquee>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./auth.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import MetaData from "../../Meta/metaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
@@ -120,9 +120,9 @@ const Login = () => {
                       {visible ? <FaRegEye /> : <FaRegEyeSlash />}
                     </div>
                   </div>
-                  <Link to="/password/forgot" className="forgot-password">
+                  {/* <Link to="/password/forgot" className="forgot-password">
                     Forget Password ?
-                  </Link>
+                  </Link> */}
                   <button
                     className="toSignUp"
                     type="button"

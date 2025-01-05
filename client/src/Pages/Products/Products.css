@@ -48,7 +48,7 @@
   margin-block-start: 50px;
   border-radius: 10px;
   min-height: 150px;
-  width: 97vw;
+  width: 50%;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   padding-bottom: 15px;
@@ -79,7 +79,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 40%;
+  width: 90%;
   padding-right: 40px;
 }
 
@@ -191,6 +191,9 @@
   width: 50px;
   opacity: 0;
 }
+.filterBox-container {
+  width: 100%;
+}
 @media screen and (max-width: 850px) {
   .productHero {
     flex-wrap: wrap;
@@ -198,6 +201,9 @@
   }
   .filters {
     flex-direction: column;
+  }
+  .filterBox {
+    width: 90%;
   }
 
   .productHeading {

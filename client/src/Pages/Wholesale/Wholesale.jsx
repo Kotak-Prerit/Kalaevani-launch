@@ -8,17 +8,17 @@ const WholesaleGrid = lazy(() =>
 );
 const Steps = lazy(() => import("../../components/Steps/Steps"));
 const Faqs = lazy(() => import("../../components/Faqs/Faqs"));
-const BulkOrder = lazy(() => import("../../components/BulkOrders/BulkOrders"));
 
 const Wholesale = () => {
   return (
     <Fragment>
       <Suspense>
         <Navbar />
-        <WholesaleGrid />
-        <Steps />
-        <Faqs />
-        <BulkOrder />
+        <div className="wholesale-wrapper">
+          <WholesaleGrid />
+          <Steps />
+          <Faqs />
+        </div>
         <Footer />
       </Suspense>
     </Fragment>

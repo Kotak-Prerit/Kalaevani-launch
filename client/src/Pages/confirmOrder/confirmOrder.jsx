@@ -19,7 +19,7 @@ const ConfirmOrder = () => {
     0
   );
 
-  const shippingCharges = shippingInfo.state === "GJ" ? 40 : 70;
+  const shippingCharges = shippingInfo.state === "Gujarat" ? 0 : 0;
 
   const totalPrice = subtotal + shippingCharges;
 

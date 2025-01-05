@@ -17,12 +17,16 @@ const MyOrders = () => {
   const { loading, error, orders } = useSelector((state) => state.myOrders);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
-
+    {
+      field: "id",
+      headerName: "ID",
+      minWidth: window.innerWidth <= 600 ? 110 : 300,
+      flex: 1,
+    },
     {
       field: "status",
       headerName: "Status",
-      minWidth: 150,
+      minWidth: window.innerWidth <= 600 ? 70 : 150,
       flex: 0.5,
       cellClassName: (params) => {
         return params.row.status === "Delivered" ? "greenColor" : "redColor";
@@ -30,38 +34,36 @@ const MyOrders = () => {
     },
     {
       field: "itemsQty",
-      headerName: "Items Qty",
+      headerName: "Qty",
       type: "number",
-      minWidth: 150,
+      minWidth: window.innerWidth <= 600 ? 70 : 150,
       flex: 0.3,
     },
     {
       field: "size",
-      headerName: "Item Size",
+      headerName: " Size",
       type: "string",
-      minWidth: 150,
+      minWidth: window.innerWidth <= 600 ? 70 : 150,
       flex: 0.3,
     },
-
     {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 270,
+      minWidth: window.innerWidth <= 600 ? 70 : 150,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
+      minWidth: window.innerWidth <= 600 ? 70 : 150,
       type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <Link to={`/order/${params.row.id}`}>
-            <MdOutlineFileDownload />
+            <MdOutlineFileDownload className="downloadBtn" />
           </Link>
         );
       },
@@ -76,7 +78,7 @@ const MyOrders = () => {
         id: item._id,
         status: item.orderStatus,
         size: item.orderItems.map((orderItem) => orderItem.size).join(", "),
-        amount: item.totalPrice,
+        amount: `₹${item.totalPrice}`,
       });
     });
 
@@ -99,13 +101,16 @@ const MyOrders = () => {
         <div className="myOrdersContainer">
           <Navbar props={logo} />
           <div className="myOrdersPage">
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={10}
-              disableSelectionOnClick
-              className="myOrdersTable poppins"
-            />
+            {/* Make the table responsive */}
+            <div className="table-responsive">
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                className="myOrdersTable poppins"
+              />
+            </div>
           </div>
         </div>
       )}

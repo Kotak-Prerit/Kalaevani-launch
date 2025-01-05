@@ -27,7 +27,7 @@ const CartItems = ({ increaseQty, decreaseQty, deleteCartItems, item }) => {
         <div className="counter align-center">
           <button
             className="minus white"
-            onClick={() => decreaseQty(item.product, item.quantity)}
+            onClick={() => decreaseQty(item.product, item.quantity, item.size)}
           >
             -
           </button>
@@ -39,7 +39,7 @@ const CartItems = ({ increaseQty, decreaseQty, deleteCartItems, item }) => {
           />
           <button
             className="plus white"
-            onClick={() => increaseQty(item.product, item.quantity, item.stock)}
+            onClick={() => increaseQty(item.product, item.quantity, item.size)}
           >
             +
           </button>
@@ -48,7 +48,7 @@ const CartItems = ({ increaseQty, decreaseQty, deleteCartItems, item }) => {
           <p className="cartPrice futuraLt">₹{item.quantity * item.price}</p>
           <IoTrash
             className="trash"
-            onClick={() => deleteCartItems(item.product)}
+            onClick={() => deleteCartItems(item.product, item.size)}
           />
         </div>
       </div>

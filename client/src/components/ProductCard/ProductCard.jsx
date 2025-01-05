@@ -1,10 +1,10 @@
 import React, { Fragment, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
-import cartOutline from "../../assets/cartOutline.svg";
-import cartFill from "../../assets/cartFill.svg";
+// import cartOutline from "../../assets/cartOutline.svg";
+// import cartFill from "../../assets/cartFill.svg";
 import "./ProductCard.css";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
   const options = {
@@ -20,7 +20,7 @@ const Product = ({ product }) => {
   const [pressed, setPressed] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [isFilled, setIsFilled] = useState(false);
+  // const [isFilled, setIsFilled] = useState(false);
 
   const handleMouseDown = (e) => {
     setPressed(true);
@@ -50,16 +50,16 @@ const Product = ({ product }) => {
     setPressed(false);
   };
 
-  const toggleCart = () => {
-    setIsFilled((prevState) => {
-      if (prevState) {
-        toast.error("Item removed from your whishlist!");
-      } else {
-        toast.success("Item added to your Whishlist 💖");
-      }
-      return !prevState; // Toggle the state
-    });
-  };
+  // const toggleCart = () => {
+  //   setIsFilled((prevState) => {
+  //     if (prevState) {
+  //       toast.error("Item removed from your whishlist!");
+  //     } else {
+  //       toast.success("Item added to your Whishlist 💖");
+  //     }
+  //     return !prevState; // Toggle the state
+  //   });
+  // };
 
   return (
     <Fragment>
@@ -109,7 +109,7 @@ const Product = ({ product }) => {
             </span>
           </div>
         </Link>
-        <div className="product-cart align-center">
+        {/* <div className="product-cart align-center">
           <button onClick={toggleCart}>
             {isFilled ? (
               <img src={cartFill} alt="Filled Cart" className="cartFill" />
@@ -121,7 +121,7 @@ const Product = ({ product }) => {
               />
             )}
           </button>
-        </div>
+        </div> */}
       </div>
     </Fragment>
   );

@@ -4,7 +4,7 @@ import cartSvg from "../../assets/cart.svg";
 import accountSvg from "../../assets/account.svg";
 import shopSvg from "../../assets/shop.svg";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StrictMode, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { useSelector } from "react-redux";
@@ -18,11 +18,16 @@ import {
 
 const Navbar = (props) => {
   const [clicked, setClicked] = useState(false);
+  const navigate = useNavigate();
 
   const { cartItems } = useSelector((state) => state.cart);
 
   const handleClick = () => {
     setClicked(!clicked);
+  };
+  const cartHandler = () => {
+    navigate("/cart");
+    window.location.reload();
   };
 
   return (
@@ -57,7 +62,7 @@ const Navbar = (props) => {
               </Link>
             </div>
             <div className={clicked ? "menuFixed" : "Fixed"}>
-              <Link to="/cart" className="cartLink">
+              <button onClick={cartHandler} className="cartLink cartBtn">
                 {" "}
                 <img
                   src={cartSvg}
@@ -67,7 +72,7 @@ const Navbar = (props) => {
                 <span className="addedToCart white poppins">
                   {cartItems.length}
                 </span>
-              </Link>
+              </button>
               <Link to="/login" className="profile">
                 <img
                   src={accountSvg}

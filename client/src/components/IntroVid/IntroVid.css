@@ -1,6 +1,5 @@
 .productVidWrapper {
   width: 100%;
-  margin: 20px;
 }
 .container {
   width: 100%;
@@ -17,14 +16,4 @@ video::-webkit-media-controls-timeline {
 }
 video {
   width: 100%;
-  clip-path: polygon(
-    10% 0,
-    90% 0,
-    100% 10%,
-    100% 95%,
-    95% 100%,
-    5% 100%,
-    0 95%,
-    0 10%
-  );
 }

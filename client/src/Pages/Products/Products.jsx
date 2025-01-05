@@ -22,7 +22,7 @@ function Products() {
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([500, 10000]);
-  const [ratings, setRatings] = useState(0);
+  // const [ratings, setRatings] = useState(0);
 
   const { keyword } = useParams();
   const [keywords, setkeyword] = useState("");
@@ -41,8 +41,8 @@ function Products() {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, ratings));
-  }, [dispatch, keyword, currentPage, error, price, ratings]);
+    dispatch(getProduct(keyword, currentPage, price));
+  }, [dispatch, keyword, currentPage, error, price]);
 
   const navigate = useNavigate();
 
@@ -106,39 +106,24 @@ function Products() {
           <Link to={"/"} className="productLogo">
             <img src={logoWhite} alt="logo" />
           </Link>
-
-          <div className="filterBox">
-            <div className="filter_FHETQW">Filters</div>
-            <div className="filters">
-              <div className="priceRange">
-                <p className="priceRange-Text poppins">Select Price Range</p>
-                <Slider
-                  value={price}
-                  onChange={priceHandler}
-                  valueLabelDisplay={window.innerWidth < 600 ? "on" : "auto"}
-                  aria-labelledby="range-slider"
-                  // defaultValue={500}
-                  min={500}
-                  max={10000}
-                  color="#000"
-                ></Slider>
+          <div className="filterBox-container flex-center">
+            <div className="filterBox">
+              <div className="filter_FHETQW">Filters</div>
+              <div className="filters">
+                <div className="priceRange">
+                  <p className="priceRange-Text poppins">Select Price Range</p>
+                  <Slider
+                    value={price}
+                    onChange={priceHandler}
+                    valueLabelDisplay={window.innerWidth < 600 ? "on" : "auto"}
+                    aria-labelledby="range-slider"
+                    // defaultValue={500}
+                    min={500}
+                    max={10000}
+                    color="#000"
+                  ></Slider>
+                </div>
               </div>
-              <fieldset>
-                <p className="rating-filter poppins">Ratings Above</p>
-                <Slider
-                  value={ratings}
-                  onChange={(e, newRating) => {
-                    setRatings(newRating);
-                  }}
-                  valueLabelDisplay="auto"
-                  defaultValue={3}
-                  step={1}
-                  marks
-                  min={0}
-                  max={5}
-                  color="#000"
-                />
-              </fieldset>
             </div>
           </div>
           <form className="searchBox" onSubmit={searchSubmitHandler}>

@@ -10,10 +10,6 @@ export const addItemsToCart =
   (id, quantity, size) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/v1/product/${id}`);
 
-    const existingCartItems = localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : [];
-
     const newCartItem = {
       product: data.product._id,
       name: data.product.name,
@@ -24,21 +20,34 @@ export const addItemsToCart =
       quantity,
     };
 
-    const mergedCartItems = [...existingCartItems, newCartItem];
+    const existingCartItems = getState().cart.cartItems;
+    const isItemExist = existingCartItems.find(
+      (item) => item.product === id && item.size === size
+    );
+
+    let updatedCartItems;
+
+    if (isItemExist) {
+      updatedCartItems = existingCartItems.map((item) =>
+        item.product === id && item.size === size ? { ...item, quantity } : item
+      );
+    } else {
+      updatedCartItems = [...existingCartItems, newCartItem];
+    }
 
     dispatch({
       type: ADD_TO_CART,
-      payload: newCartItem,
+      payload: updatedCartItems,
     });
 
-    localStorage.setItem("cartItems", JSON.stringify(mergedCartItems));
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
 // REMOVE FROM CART
-export const removeItemsFromCart = (id) => async (dispatch, getState) => {
+export const removeItemsFromCart = (id, size) => async (dispatch, getState) => {
   dispatch({
     type: REMOVE_CART_ITEM,
-    payload: id,
+    payload: { id, size },
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));

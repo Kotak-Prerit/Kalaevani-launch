@@ -8,14 +8,14 @@
 
 .app-container {
   width: 90%;
-  background-image: linear-gradient(#580e8f, #9200ff);
+  background-image: linear-gradient(#222831, #31363f);
   margin-top: 20px;
   border-radius: 10px;
   overflow: hidden;
 }
 .top-box {
   height: 150px;
-  background-color: #9100fb;
+  background-color: #76abae;
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 80px;
   text-align: center;
@@ -40,7 +40,7 @@
 .bottom-box {
   width: calc(100% - 60px);
   height: 30px;
-  background-color: #9100fb;
+  background-color: #526d82;
   margin-left: 30px;
   border-radius: 10px;
 }
@@ -78,17 +78,20 @@
 
 .middle-box {
   height: 150px;
-  background-image: linear-gradient(#580e8f, #9200ff);
+  background-image: linear-gradient(#27374d, #526d82);
   margin: -70px 30px 20px;
   text-align: center;
   font-size: 12px;
   border-radius: 10px;
   color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .middle-box h1 {
-  padding-top: 30px;
-  padding-bottom: 30px;
   font-size: 50px;
   font-weight: normal;
 }
@@ -109,7 +112,7 @@
   width: calc(100% - 60px) !important;
   margin-left: 30px;
   margin-block: 20px;
-  background: linear-gradient(#9200ff, #580e8f);
+  background: linear-gradient(#526d82, #27374d);
   padding: 20px;
   border-radius: 10px;
   overflow: hidden;
@@ -132,11 +135,12 @@
   font-weight: bold;
 }
 .paymentBtn {
-  background: #000;
+  background: #526d82;
   color: #fff;
   width: calc(100% - 60px);
   margin-left: 30px;
   margin-bottom: 20px;
   padding-block: 10px;
   border-radius: 10px;
+  border: none;
 }
