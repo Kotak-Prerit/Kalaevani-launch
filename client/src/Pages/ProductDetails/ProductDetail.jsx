@@ -182,7 +182,7 @@ const ProductDetails = () => {
     if (product.Stock < 5 && product.Stock < 0) {
       return <p className="red">Last 5 left</p>;
     } else if (product.Stock > 5) {
-      return <p className="green">InStock</p>;
+      return <p className="green">{product.Stock} left</p>;
     } else if (product.Stock === 0) {
       return <p className="red">Out of stock</p>;
     }

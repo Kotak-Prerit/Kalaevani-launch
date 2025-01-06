@@ -88,9 +88,10 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (req.body.status === "Shipped") {
-    order.orderItems.forEach(async (o) => {
-      await updateStock(o.product, o.quantity);
-    });
+    for (let i = 0; i < order.orderItems.length; i++) {
+      const items = order.orderItems[i];
+      await updateStock(items);
+    }
   }
   order.orderStatus = req.body.status;
 
@@ -104,12 +105,25 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-async function updateStock(id, quantity) {
-  const product = await Product.findById(id);
+async function updateStock(order) {
+  const product = await Product.findById(order.product);
 
-  product.Stock -= quantity;
-
-  await product.save({ validateBeforeSave: false });
+  const updatedSizes = [...product.sizes].map((item) => {
+    console.log(item.name, order.size, item.name === order.size);
+    if (item.name === order.size) {
+      item.quantity -= order.quantity;
+    }
+    return item;
+  });
+  console.log(">>>", updatedSizes);
+  await Product.findByIdAndUpdate(
+    order.product,
+    {
+      sizes: updatedSizes,
+      Stock: product.Stock - order.quantity,
+    },
+    { new: true }
+  );
 }
 
 // delete Order -- Admin

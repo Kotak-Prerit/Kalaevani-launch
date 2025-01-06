@@ -11,27 +11,10 @@ export const cartReducer = (
   switch (action.type) {
     case ADD_TO_CART:
       const item = action.payload;
-
-      // Check if an item with the same product and size exists
-      const isItemExist = state.cartItems.find(
-        (i) => i.product === item.product && i.size === item.size
-      );
-
-      if (isItemExist) {
-        return {
-          ...state,
-          cartItems: state.cartItems.map((i) =>
-            i.product === isItemExist.product && i.size === isItemExist.size
-              ? item
-              : i
-          ),
-        };
-      } else {
-        return {
-          ...state,
-          cartItems: [...state.cartItems, item],
-        };
-      }
+      return {
+        ...state,
+        cartItems: item,
+      };
 
     case REMOVE_CART_ITEM:
       return {

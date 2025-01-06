@@ -21,21 +21,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter Your Password"],
     minLength: [8, "Password should be greater than 8 characters"],
-    validate: [
-      function (password) {
-        const hasUppercase = /[A-Z]/.test(password);
-        const hasDigit = /[0-9]/.test(password);
-        if (!hasUppercase) {
-          throw new Error(
-            "Password must contain at least one uppercase letter"
-          );
-        }
-        if (!hasDigit) {
-          throw new Error("Password must contain at least one number");
-        }
-      },
-      "Password must contain at least one uppercase letter and one digit",
-    ],
     select: false,
   },
   emailVerified: {
@@ -93,7 +78,7 @@ userSchema.methods.getResetPasswordToken = function () {
 
   this.resetpasswordExpire = Date.now() + 100 * 60 * 1000;
 
-  return resetToken;
+  return this.resetPasswordToken;
 };
 
 module.exports = mongoose.model("User", userSchema);

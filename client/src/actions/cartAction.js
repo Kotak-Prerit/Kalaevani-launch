@@ -26,7 +26,6 @@ export const addItemsToCart =
     );
 
     let updatedCartItems;
-
     if (isItemExist) {
       updatedCartItems = existingCartItems.map((item) =>
         item.product === id && item.size === size ? { ...item, quantity } : item

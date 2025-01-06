@@ -13,7 +13,7 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { token } = useParams;
+  const { token } = useParams();
 
   const { error, success, loading } = useSelector(
     (state) => state.forgotPassword
@@ -56,6 +56,7 @@ const ResetPassword = () => {
           <Navbar />
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
+              <h2>{token}</h2>
               <h2 className="futuraLt updateHead">Change Password</h2>
               <form
                 className="resetPasswordForm"

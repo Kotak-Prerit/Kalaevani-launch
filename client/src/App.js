@@ -1,7 +1,7 @@
 import "./App.css";
 import { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Lenis from "lenis";
+// import Lenis from "lenis";
 import Home from "./Pages/Home/Home";
 import { HelmetProvider } from "react-helmet-async";
 import { ToastContainer } from "react-toastify";
@@ -44,44 +44,45 @@ import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProcessOrder from "./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx";
 
 function App() {
-  const lenis = new Lenis();
-  lenis.on("scroll", (e) => {});
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+  // const lenis = new Lenis();
+  // lenis.on("scroll", (e) => {});
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
 
-  requestAnimationFrame(raf);
+  // requestAnimationFrame(raf);
+
+  window.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        event.shiftKey &&
+        (event.code === "KeyJ" || event.code === "KeyI")
+      ) {
+        event.preventDefault();
+      }
+
+      // Disable F12
+      if (event.code === "F12") {
+        event.preventDefault();
+      }
+    };
+
+    // Add the event listener
+    document.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   useEffect(() => {
     store.dispatch(loadUser());
   });
-
-  // window.addEventListener("contextmenu", (e) => e.preventDefault());
-
-  // useEffect(() => {
-  //   const handleKeyDown = (event) => {
-  //     if (
-  //       (event.ctrlKey || event.metaKey) &&
-  //       event.shiftKey &&
-  //       (event.code === "KeyJ" || event.code === "KeyI")
-  //     ) {
-  //       event.preventDefault();
-  //     }
-
-  //     // Disable F12
-  //     if (event.code === "F12") {
-  //       event.preventDefault();
-  //     }
-  //   };
-
-  //   // Add the event listener
-  //   document.addEventListener("keydown", handleKeyDown);
-
-  //   // Cleanup the event listener on component unmount
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, []);
 
   return (
     <Fragment>

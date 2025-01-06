@@ -12,7 +12,6 @@ import Marquee from "react-fast-marquee";
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-
   const navigate = useNavigate();
 
   const increaseQauntity = (id, quantity, size) => {

@@ -14,7 +14,6 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
     email,
     password,
   }).catch((err) => {
-    console.error("Error creating user:", err);
     throw new ErrorHandler("Error creating user", 500);
   });
   sendToken(user, 201, res);
@@ -96,15 +95,8 @@ exports.forgotPassword = catchAsyncError(async (req, res, next) => {
 
 // Reset password :
 exports.resetPassword = catchAsyncError(async (req, res, next) => {
-  //crearting token hash
-  const resetPasswordToken = crypto
-    .createHash("sha256")
-    .update(req.params.token)
-    .digest("hex");
-
   const user = await User.findOne({
-    resetPasswordToken,
-    resetpasswordExpire: { $gt: Date.now() },
+    resetPasswordToken: req.params.token,
   });
 
   if (!user) {

@@ -1,33 +1,31 @@
-// import LogoBlack from "../../assets/kalaevaniBlack.png";
 import LogoWhite from "../../assets/kalaevaniWhite.png";
 import cartSvg from "../../assets/cart.svg";
 import accountSvg from "../../assets/account.svg";
 import shopSvg from "../../assets/shop.svg";
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { StrictMode, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { useSelector } from "react-redux";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaWhatsapp,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import sizeChart from "../../assets/sizechart.png";
 
 const Navbar = (props) => {
   const [clicked, setClicked] = useState(false);
-  const navigate = useNavigate();
-
   const { cartItems } = useSelector((state) => state.cart);
+
+  const [sizeChartIsOpen, setSizeChartIsOpen] = useState(false);
+
+  const openSizeChart = () => {
+    setSizeChartIsOpen(true);
+  };
+
+  const closeSizeChart = () => {
+    setSizeChartIsOpen(false);
+  };
 
   const handleClick = () => {
     setClicked(!clicked);
-  };
-  const cartHandler = () => {
-    navigate("/cart");
-    window.location.reload();
   };
 
   return (
@@ -38,8 +36,9 @@ const Navbar = (props) => {
             <img
               src={props.props}
               className={clicked ? "menuLogo" : "logo"}
-              alt=""
+              alt="logo"
               height={200}
+              width={200}
             />
           </Link>
           <Link to="/">
@@ -62,8 +61,7 @@ const Navbar = (props) => {
               </Link>
             </div>
             <div className={clicked ? "menuFixed" : "Fixed"}>
-              <button onClick={cartHandler} className="cartLink cartBtn">
-                {" "}
+              <Link className="cartLink" to={"/cart"}>
                 <img
                   src={cartSvg}
                   alt=""
@@ -72,7 +70,7 @@ const Navbar = (props) => {
                 <span className="addedToCart white poppins">
                   {cartItems.length}
                 </span>
-              </button>
+              </Link>
               <Link to="/login" className="profile">
                 <img
                   src={accountSvg}
@@ -110,7 +108,7 @@ const Navbar = (props) => {
                   <FaInstagram />
                 </Link>
                 <Link
-                  to={""}
+                  to={"https://www.facebook.com/profile.php?id=61562478641808"}
                   className={clicked ? "menuSocialActive" : "vanish"}
                 >
                   <FaFacebook />
@@ -122,14 +120,9 @@ const Navbar = (props) => {
                 >
                   <FaWhatsapp />
                 </Link>
+
                 <Link
-                  to={""}
-                  className={clicked ? "menuSocialActive" : "vanish"}
-                >
-                  <FaLinkedinIn />
-                </Link>
-                <Link
-                  to={""}
+                  to={"https://www.youtube.com/@Kalaevani"}
                   className={clicked ? "menuSocialActive" : "vanish"}
                 >
                   <FaYoutube />
@@ -164,9 +157,12 @@ const Navbar = (props) => {
               >
                 <p className="links">Account</p>
               </Link>
-              <Link to="/" className={clicked ? "menuLinksActive" : "vanish"}>
-                <p className="links">Size Chart</p>
-              </Link>
+              <button
+                className={clicked ? "menuLinksActive sizeBtn" : "vanish"}
+                onClick={openSizeChart}
+              >
+                <p className="links">SIZE CHART</p>
+              </button>
               <Link
                 to="/privacy"
                 className={clicked ? "menuLinksActive" : "vanish"}
@@ -174,6 +170,17 @@ const Navbar = (props) => {
                 <p className="links">Privacy Policy</p>
               </Link>
             </div>
+            {sizeChartIsOpen && (
+              <div className="sizeChartPopup">
+                <div className="popupOverlay" onClick={closeSizeChart}></div>
+                <div className="popupContent">
+                  <button className="closeButton" onClick={closeSizeChart}>
+                    X
+                  </button>
+                  <img src={sizeChart} alt="Size Chart" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

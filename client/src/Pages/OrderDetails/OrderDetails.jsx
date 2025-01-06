@@ -7,6 +7,7 @@ import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import Loader from "../../components/Loader/Loader";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import logo from "../../assets/kalaevaniBlack.png";
 
 const OrderDetails = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -36,6 +37,7 @@ const OrderDetails = () => {
           <MetaData title="Order Details" />
           <div className="orderDetailsPage poppins">
             <div className="orderDetailsContainer">
+              <img src={logo} alt="logo" height={60} />
               <h1>Order #{order && order._id}</h1>
               <h3>Shipping Info</h3>
               <div className="orderDetailsContainerBox">

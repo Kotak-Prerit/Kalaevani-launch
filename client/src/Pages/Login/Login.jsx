@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./auth.css";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MetaData from "../../Meta/metaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
@@ -120,9 +120,9 @@ const Login = () => {
                       {visible ? <FaRegEye /> : <FaRegEyeSlash />}
                     </div>
                   </div>
-                  {/* <Link to="/password/forgot" className="forgot-password">
+                  <Link to="/password/forgot" className="forgot-password">
                     Forget Password ?
-                  </Link> */}
+                  </Link>
                   <button
                     className="toSignUp"
                     type="button"
@@ -174,7 +174,11 @@ const Login = () => {
                         name="password"
                         value={password}
                         onChange={registerDataChange}
-                        className="lr-input"
+                        className={`lr-input ${
+                          password.length >= 8
+                            ? "valid-password"
+                            : "invalid-password"
+                        }`}
                       />
                       <div
                         className="eyeIcon"
@@ -185,10 +189,11 @@ const Login = () => {
                         {rvisible ? "HIDE" : "SHOW"}
                       </div>
                     </div>
-                    <p className="passReq poppins">
-                      Password must contain atleast :
-                      <br /> 1 uppercase letter , 1 character (@ _ $) <br /> 1
-                      digit & 8 characters
+                    <p
+                      className="passReq poppins"
+                      style={{ color: password.length >= 8 ? "green" : "red" }}
+                    >
+                      Password must contain at least 8 characters
                     </p>
                   </div>
                   <input

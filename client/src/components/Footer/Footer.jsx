@@ -97,7 +97,7 @@ export default function Footer() {
               <div className="others">
                 <p className="heading">Catch Up</p>
                 <div className="details">
-                  <Link className="anchor" to="/">
+                  <Link className="anchor" to="mailto:kalaevanii@gmail.com">
                     kalaevani@gmail.com
                   </Link>
                   <Link className="anchor" to="/faqs">
