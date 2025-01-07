@@ -45,7 +45,7 @@ const Dashboard = () => {
                 <p className="boxNumbers">NA</p>
               </div>
               <div className="dashboardBox">
-                <Link to="/admin/products">
+                <Link to="/admin/products897451569418741">
                   <p className="boxTitle poppins flex-center">
                     {" "}
                     <LuBox className="box" />
@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </Link>
               </div>
               <div className="dashboardBox">
-                <Link to="/admin/orders">
+                <Link to="/admin/orders897451569418741">
                   <p className="boxTitle poppins flex-center">
                     <RiBarcodeBoxLine className="barcode" />
                     Orders
@@ -66,7 +66,7 @@ const Dashboard = () => {
                 </Link>
               </div>
               <div className="dashboardBox">
-                <Link to="/admin/users">
+                <Link to="/admin/users897451569418741">
                   <p className="boxTitle poppins flex-center">
                     {" "}
                     <FaArrowTrendUp className="grow" />

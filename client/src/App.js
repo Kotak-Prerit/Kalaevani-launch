@@ -117,11 +117,20 @@ function App() {
             <Route path="/password/reset/:token" element={<ResetPassword />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="/admin/dashboard" element={<Dashboard />} />
-            <Route path="/admin/products" element={<ProductList />} />
-            <Route path="/admin/orders" element={<OrderList />} />
+            <Route
+              path="/admin/products897451569418741"
+              element={<ProductList />}
+            />
+            <Route
+              path="/admin/orders897451569418741"
+              element={<OrderList />}
+            />
             <Route path="/admin/order/:id" element={<ProcessOrder />} />
-            <Route path="/admin/product" element={<NewProduct />} />
-            <Route path="/admin/users" element={<UserList />} />
+            <Route
+              path="/admin/product897451569418741"
+              element={<NewProduct />}
+            />
+            <Route path="/admin/users897451569418741" element={<UserList />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
             <Route path="/success" element={<Success />} />
           </Routes>
