@@ -36,9 +36,7 @@ const Navbar = (props) => {
             <img
               src={props.props}
               className={clicked ? "menuLogo" : "logo"}
-              alt="logo"
-              height={200}
-              width={200}
+              alt=""
             />
           </Link>
           <Link to="/">
@@ -46,7 +44,6 @@ const Navbar = (props) => {
               src={LogoWhite}
               className={clicked ? "logoOpen" : "menuLogo"}
               alt=""
-              height={200}
             />
           </Link>
         </div>
@@ -114,7 +111,7 @@ const Navbar = (props) => {
                   <FaFacebook />
                 </Link>
                 <Link
-                  to="https://wa.me/+918160936541"
+                  to="https://wa.me/+917359291555"
                   target="_blank"
                   className={clicked ? "menuSocialActive" : "vanish"}
                 >

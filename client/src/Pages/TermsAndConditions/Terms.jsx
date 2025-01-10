@@ -1,6 +1,8 @@
 import React, { Suspense, Fragment, lazy } from "react";
 import { Link } from "react-router-dom";
 import "../PrivacyPolicy/Privacy.css";
+import logo from "../../assets/kalaevaniBlack.png";
+import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../../components/Footer/Footer"));
@@ -9,7 +11,8 @@ const Terms = () => {
   return (
     <Fragment>
       <Suspense>
-        <Navbar />
+        <MetaData title="Terms and Conditions - Kalaevani" />
+        <Navbar props={logo} />
         <div className="privacy-container">
           <h1 className="futuraLt">Terms & Condition</h1>
           <p className="intro poppins">1. Introduction</p>

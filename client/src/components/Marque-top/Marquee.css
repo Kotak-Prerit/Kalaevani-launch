@@ -13,3 +13,11 @@
   margin-right: 10px;
   font-size: 20px;
 }
+@media screen and (max-width: 768px) {
+  .marquee {
+    height: 25px;
+  }
+  .dst {
+    font-size: 11px;
+  }
+}

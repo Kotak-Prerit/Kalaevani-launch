@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Product from "../../components/ProductCard/ProductCard";
 import { motion } from "framer-motion";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import Pagination from "react-js-pagination";
 import { toast } from "react-toastify";
 import "./Products.css";
@@ -40,7 +40,7 @@ function Products() {
       toast.error(error);
       dispatch(clearErrors());
     }
-
+    window.scrollTo(0, 0);
     dispatch(getProduct(keyword, currentPage, price));
   }, [dispatch, keyword, currentPage, error, price]);
 

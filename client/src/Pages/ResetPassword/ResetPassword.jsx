@@ -1,13 +1,14 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./ResetPassword.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, resetPassword } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/Loader/Loader";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import logo from "../../assets/kalaevaniBlack.png";
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const ResetPassword = () => {
       ) : (
         <Fragment>
           <MetaData title={"Reset Password"} />
-          <Navbar />
+          <Navbar props={logo} />
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
               <h2>{token}</h2>

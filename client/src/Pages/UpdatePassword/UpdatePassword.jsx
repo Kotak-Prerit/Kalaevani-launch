@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import "./updatePassword.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
@@ -13,6 +13,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
 import Loader from "../../components/Loader/Loader";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import logo from "../../assets/kalaevaniBlack.png";
 
 const UpdatePassword = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const UpdatePassword = () => {
       ) : (
         <Fragment>
           <MetaData title={"Update Password"} />
-          <Navbar />
+          <Navbar props={logo} />
           <div className="updatePasswordContainer">
             <div className="updatePasswordBox">
               <h2 className="futuraLt updateHead">Change Password</h2>

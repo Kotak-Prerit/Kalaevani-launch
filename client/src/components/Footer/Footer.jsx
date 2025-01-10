@@ -156,7 +156,7 @@ export default function Footer() {
             <Link to={"/"}>
               <img src={Logo} alt="" className="footerLogo" />
             </Link>
-            <p className="copyright">© 2024 Kalaevani-Clothing, Inc.</p>
+            <p className="copyright">© 2025 Kalaevani-Clothing, Inc.</p>
           </div>
         </div>
       )}

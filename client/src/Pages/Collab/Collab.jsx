@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import collab from "../../assets/collab.png";
 import "../Contact/Contact.css";
 import { toast } from "react-toastify";
+import MetaData from "../../Meta/MetaData";
 import logo from "../../assets/kalaevaniBlack.png";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
@@ -61,6 +62,7 @@ function Contact() {
 
   return (
     <Suspense>
+      <MetaData title="Collab with Kalaevani" />
       <Navbar props={logo} />
       <div className="contact-main" id="contact">
         <p className="contact-page-text">

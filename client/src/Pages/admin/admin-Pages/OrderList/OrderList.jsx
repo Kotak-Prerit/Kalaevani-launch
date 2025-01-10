@@ -9,7 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
-import MetaData from "../../../../Meta/metaData";
+import MetaData from "../../../../Meta/MetaData";
 import { getAllOrders } from "../../../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../../../constants/orderConstants";
 

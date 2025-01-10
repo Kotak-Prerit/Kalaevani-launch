@@ -16,7 +16,7 @@ import MaterialPopup from "../../components/Popup/MaterialPopup";
 import ReactStars from "react-stars";
 import ReviewCard from "../../components/Reviews/ReviewCard";
 import { toast } from "react-toastify";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import Loader from "../../components/Loader/Loader";
 import { addItemsToCart } from "../../actions/cartAction";
 import Product from "../../components/ProductCard/ProductCard";
@@ -182,7 +182,7 @@ const ProductDetails = () => {
     if (product.Stock < 5 && product.Stock < 0) {
       return <p className="red">Last 5 left</p>;
     } else if (product.Stock > 5) {
-      return <p className="green">{product.Stock} left</p>;
+      return <p className="green">Only {product.Stock} left</p>;
     } else if (product.Stock === 0) {
       return <p className="red">Out of stock</p>;
     }
@@ -324,6 +324,7 @@ const ProductDetails = () => {
           </section>
           <section className="product-Detail" ref={productDetailRef}>
             <h1 className="fcc futuraLt">fabric / care & Artwork Meaning</h1>
+            <p className="click Apercu">Click on the blinking buttons</p>
             <div className="details-container flex-center">
               <img src={productImage} alt="" className="three-dimensional" />
               <Fragment>

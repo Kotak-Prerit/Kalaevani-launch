@@ -34,8 +34,8 @@
 }
 
 .logo {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 60px;
   animation: fadeUp 0.7s ease;
   margin-top: 10px;
   mix-blend-mode: color-burn;
@@ -44,7 +44,8 @@
 .logoOpen {
   position: fixed;
   top: 2vh;
-  height: 50px;
+  height: auto;
+  width: 60px;
 }
 
 .vanish {
@@ -247,8 +248,10 @@
 }
 
 .logo {
-  height: 60px;
+  height: auto;
+  width: 60px;
 }
+
 .menu-socials {
   position: absolute;
   bottom: 2.5vw;
@@ -348,7 +351,8 @@
 
   .logo {
     margin-left: 0;
-    height: 5vh;
+    height: auto;
+    width: 60px;
   }
 
   .Fixed {

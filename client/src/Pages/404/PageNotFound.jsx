@@ -3,7 +3,7 @@ import notFound from "../../assets/404.png";
 import logo from "../../assets/kalaevaniBlack.png";
 import "./PageNotFound.css";
 import { Link } from "react-router-dom";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 
 const PageNotFound = () => {
   return (

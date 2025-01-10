@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./auth.css";
 import { Link } from "react-router-dom";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { toast } from "react-toastify";

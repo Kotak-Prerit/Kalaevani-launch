@@ -4,7 +4,7 @@ import "./Account.css";
 import { useSelector } from "react-redux";
 import { loadUser } from "../../actions/userAction";
 import store from "../../store/store";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import orderImg from "../../assets/order.png";
 import profile from "../../assets/edit-profile.png";
 import dashboard from "../../assets/dashboard.png";

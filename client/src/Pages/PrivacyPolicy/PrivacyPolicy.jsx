@@ -1,4 +1,5 @@
 import React, { Suspense, Fragment, lazy } from "react";
+import logo from "../../assets/kalaevaniBlack.png";
 import "./Privacy.css";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
@@ -8,7 +9,7 @@ const PrivacyPolicy = () => {
   return (
     <Fragment>
       <Suspense>
-        <Navbar />
+        <Navbar props={logo} />
         <div className="privacy-container">
           <h1 className="futuraLt">Privacy Policy</h1>
           <p className="para1 poppins">

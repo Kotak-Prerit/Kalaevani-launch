@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Cart.css";
 import { Link, useNavigate } from "react-router-dom";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import CartItems from "../../components/CartItems/CartItems";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";

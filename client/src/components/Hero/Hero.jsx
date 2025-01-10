@@ -41,8 +41,8 @@ const Hero = () => {
   return (
     <div id="hero-wrapper">
       <div className="hero">
-        <h1 className="futuraLt">Wear your</h1>
-        <h2 className="futuraLt">Emotions</h2>
+        <h1 className="Staatliches">Wear your</h1>
+        <h2 className="Staatliches">Emotions</h2>
       </div>
       <div className="hero-buttons">
         <button type="button" id="colors-btn" onClick={changeColors}>

@@ -1,5 +1,7 @@
 import React, { Fragment, lazy, Suspense } from "react";
 import "./Wholesale.css";
+import logo from "../../assets/kalaevaniBlack.png";
+import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../../components/Footer/Footer"));
@@ -12,8 +14,9 @@ const Faqs = lazy(() => import("../../components/Faqs/Faqs"));
 const Wholesale = () => {
   return (
     <Fragment>
+      <MetaData title={"Wholesale Enquiry"} />
       <Suspense>
-        <Navbar />
+        <Navbar props={logo} />
         <div className="wholesale-wrapper">
           <WholesaleGrid />
           <Steps />

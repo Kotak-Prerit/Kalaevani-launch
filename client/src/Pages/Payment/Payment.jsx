@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import CheckoutSteps from "../../components/checkoutStepper/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 import "./Payment.css";
 import { useNavigate } from "react-router-dom";

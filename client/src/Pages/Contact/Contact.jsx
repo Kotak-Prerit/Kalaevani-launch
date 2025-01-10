@@ -4,6 +4,7 @@ import project from "../../assets/project.gif";
 import "./Contact.css";
 import { toast } from "react-toastify";
 import logo from "../../assets/kalaevaniBlack.png";
+import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../../components/Footer/Footer"));
@@ -61,6 +62,7 @@ function Contact() {
 
   return (
     <Suspense>
+      <MetaData title="Contact Us" />
       <Navbar props={logo} />
       <div className="contact-main" id="contact">
         <p className="contact-page-text">

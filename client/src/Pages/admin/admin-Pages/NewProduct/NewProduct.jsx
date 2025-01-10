@@ -3,7 +3,7 @@ import "./NewProduct.css";
 // import { useSelector, useDispatch } from "react-redux";
 // import { createProduct, clearErrors } from "../../../../actions/productAction";
 // import { Button } from "@mui/material";
-import MetaData from "../../../../Meta/metaData";
+import MetaData from "../../../../Meta/MetaData";
 // import { LuPaintbrush } from "react-icons/lu";
 // import { GiClothes, GiThermometerCold } from "react-icons/gi";
 // import { AiOutlineProduct } from "react-icons/ai";

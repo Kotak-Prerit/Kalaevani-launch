@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import "./Shipping.css";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import CheckoutSteps from "../../components/checkoutStepper/CheckoutSteps";
 import { toast } from "react-toastify";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";

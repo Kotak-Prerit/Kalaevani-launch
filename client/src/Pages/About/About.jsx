@@ -1,13 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./About.css";
 import aboutVid from "../../assets/about-vid.mp4";
 import logo from "../../assets/kalaevaniBlack.png";
+import MetaData from "../../Meta/MetaData";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Fragment>
+      <MetaData title={"About Kalaevani"} />
       <Navbar props={logo} />
       <div className="aboutContainer p-i-2_5 poppins">
         <div className="content">

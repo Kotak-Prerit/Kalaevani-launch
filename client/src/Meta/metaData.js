@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-const metaData = ({ title }) => {
+const MetaData = ({ title }) => {
   return (
     <Helmet prioritizeSeoTags>
       <title>{title}</title>
@@ -9,4 +9,4 @@ const metaData = ({ title }) => {
   );
 };
 
-export default metaData;
+export default MetaData;

@@ -1,5 +1,7 @@
 import React, { Fragment, lazy, Suspense } from "react";
 import "../ShippingReturn/SR.css";
+import logo from "../../assets/kalaevaniBlack.png";
+import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../../components/Footer/Footer"));
@@ -8,7 +10,8 @@ const ReturnRefund = () => {
   return (
     <Fragment>
       <Suspense>
-        <Navbar />
+        <MetaData title={"Return & refund Policy - Kalevani"} />
+        <Navbar props={logo} />
         <div className="srContainer">
           <div className="shipping">
             <h1 className="futuraLt srHead">Return & Refund Policy</h1>

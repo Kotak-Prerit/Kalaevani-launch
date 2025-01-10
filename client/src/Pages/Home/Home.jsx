@@ -1,6 +1,6 @@
 import React, { Fragment, lazy, Suspense, useEffect, useState } from "react";
 import "./Home.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 // import Loader from "../../components/Loader/Loader";
 import { motion } from "framer-motion";
 import { clearErrors, getProduct } from "../../actions/productAction.js";

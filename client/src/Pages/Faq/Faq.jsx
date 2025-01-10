@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import logo from "../../assets/kalaevaniBlack.png";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const Faq = () => {

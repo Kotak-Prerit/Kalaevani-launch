@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Success.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useNavigate } from "react-router-dom";
 
 const Success = () => {

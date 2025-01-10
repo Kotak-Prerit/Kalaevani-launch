@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import CheckoutSteps from "../../components/checkoutStepper/CheckoutSteps";
 import { useSelector } from "react-redux";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import "./ConfirmOrder.css";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";

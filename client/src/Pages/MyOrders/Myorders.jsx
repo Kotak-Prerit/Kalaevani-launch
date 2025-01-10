@@ -6,7 +6,7 @@ import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import Navbar from "../../components/Navbar/Navbar";
 import { MdOutlineFileDownload } from "react-icons/md";
 import logo from "../../assets/kalaevaniBlack.png";

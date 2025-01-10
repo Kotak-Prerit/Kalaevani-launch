@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 @font-face {
   font-family: "Futura LT Pro Book";
@@ -43,6 +44,9 @@
 }
 .Apercu {
   font-family: "Apercu", sans-serif;
+}
+.Staatliches {
+  font-family: "Staatliches", serif;
 }
 .futuraLt {
   font-family: "Futura LT Pro Book", sans-serif;

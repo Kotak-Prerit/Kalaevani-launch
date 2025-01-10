@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from "react";
 // import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import { toast } from "react-toastify";

@@ -47,6 +47,23 @@ const ProductImages = () => {
     });
   };
 
+  useEffect(() => {
+    const preventDoubleTapZoom = (event) => {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    };
+
+    const container = document.querySelector(".productImagesWrapper");
+    container.addEventListener("touchstart", preventDoubleTapZoom, {
+      passive: false,
+    });
+
+    return () => {
+      container.removeEventListener("touchstart", preventDoubleTapZoom);
+    };
+  }, []);
+
   return (
     <div className="productImagesWrapper">
       <button onClick={handleGoBack} className="gobackButton flex-center">
@@ -66,7 +83,7 @@ const ProductImages = () => {
                   className="image"
                   draggable="false"
                   initial={{ scale: 1 }}
-                  whileTap={{ scale: 1.1 }}
+                  whileTap={{ scale: 2 }}
                   drag={true}
                   dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
                   dragSnapBack={true}

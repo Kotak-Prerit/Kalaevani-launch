@@ -1,13 +1,14 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import "./updateProfile.css";
-import MetaData from "../../Meta/metaData";
+import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import Loader from "../../components/Loader/Loader";
+import logo from "../../assets/kalaevaniBlack.png";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const Profile = () => {
       ) : (
         <Fragment>
           <MetaData title={"Update Profile"} />
-          <Navbar />
+          <Navbar props={logo} />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
               <h2 className="futuraLt updateHead">Update Profile</h2>

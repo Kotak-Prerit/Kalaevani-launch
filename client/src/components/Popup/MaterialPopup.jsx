@@ -86,7 +86,7 @@ const MaterialPopup = ({ isOpen, onClose, materialName }) => {
       <p className="pd-data poppins">{selectedMaterial.data}</p>
       <img
         src={selectedMaterial.image}
-        alt={" "}
+        alt={""}
         style={{ borderRadius: "10px" }}
         className="fabric-gsm"
       />
