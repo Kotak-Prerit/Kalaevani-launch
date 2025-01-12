@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[264],{7264:(e,s,a)=>{a.r(s),a.d(s,{default:()=>t});a(5043);var n=a(8818),c=a(579);const t=function(e){let{dataArray:s,speed:a,direction:t}=e;return(0,c.jsx)("div",{className:"marquee",children:(0,c.jsx)(n.A,{autoFill:!0,children:(0,c.jsx)("p",{className:"poppins dst",children:"Beta Version Launched"})})})}}}]);
-//# sourceMappingURL=264.b1a50199.chunk.js.map

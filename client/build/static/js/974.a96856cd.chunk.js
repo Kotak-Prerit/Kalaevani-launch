@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[974],{8034:(c,e,s)=>{s.r(e),s.d(e,{default:()=>t});s(5043);const a=s.p+"static/media/productVid.a4acb7e26fc252833d7b.mp4";var d=s(579);const t=()=>(0,d.jsx)("div",{className:"container",children:(0,d.jsx)("div",{className:"productVidWrapper",children:(0,d.jsx)("video",{muted:!0,autoPlay:!0,className:"productVid",loop:!0,controls:!0,children:(0,d.jsx)("source",{src:a,type:"video/mp4"})})})})}}]);
-//# sourceMappingURL=974.a96856cd.chunk.js.map
