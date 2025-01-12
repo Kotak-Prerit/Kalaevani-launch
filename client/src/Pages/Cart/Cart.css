@@ -1,11 +1,25 @@
+.checkoutBtn,
+.productPageBtn {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.checkoutBtn,
+.trash {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.appreciate,
+.beforeCheckout,
+.cartemptyText,
+.checkoutBtn,
+.productPageBtn {
+  text-transform: uppercase;
+}
 .cartContainer {
   background: #000;
   padding-bottom: 5vh;
   min-height: 100vh;
 }
-/* .emptyCartWrapper {
-  display: none;
-} */
 .cartEmpty {
   font-size: 5vmax;
   font-weight: 700;
@@ -17,13 +31,11 @@
 }
 .productPageBtn {
   border-radius: 50px;
-  text-decoration: none;
   padding: 20px 30px;
   border: 1px solid #fff;
   font-size: 18px;
   font-weight: 600;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 .cartTitle {
   justify-content: space-between;
@@ -45,6 +57,7 @@
 .cartQuantityWrapper {
   width: 40%;
 }
+.checkoutBtn:hover,
 .productPageBtn:hover {
   background: #fff;
   color: #000;
@@ -55,32 +68,21 @@
   padding-block: 1rem;
   overflow: hidden;
 }
-
 .cartemptyText {
   margin-right: 10px;
-  text-transform: uppercase;
   font-size: 3rem;
 }
-
 .checkoutBtn {
   color: #fff;
   width: 100%;
-  text-decoration: none;
   border: 1px solid #fff;
   padding: 20px 30px;
   border-radius: 100px;
   text-align: center;
   margin-top: 5vh;
   font-weight: 800;
-  transition: all 0.3s ease;
-  background: transparent;
+  background: 0 0;
   font-size: 18px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.checkoutBtn:hover {
-  background: #fff;
-  color: #000;
 }
 .CouponCode {
   display: flex;
@@ -98,7 +100,6 @@
 }
 .beforeCheckout {
   width: 50%;
-  text-transform: uppercase;
 }
 .delivery,
 .subtotal {
@@ -123,8 +124,6 @@
 }
 .trash {
   font-size: 18px;
-  transition: all 0.3s ease;
-  cursor: pointer;
 }
 .trash:hover {
   color: red;
@@ -141,28 +140,23 @@
   width: 75%;
   font-size: 5vw;
   line-height: 1;
-  text-transform: uppercase;
 }
 @keyframes cartmarquee {
   0% {
     left: 100%;
   }
-
   100% {
     left: -100%;
   }
 }
-
 @keyframes emptymarquee {
   0% {
     left: -100%;
   }
-
   100% {
     left: 100%;
   }
 }
-
 .productAddedWrapper {
   width: 100%;
   justify-content: flex-end;
@@ -171,6 +165,7 @@
   font-size: 3vmax;
 }
 @media screen and (max-width: 600px) {
+  .appreciate,
   .beforeCheckout {
     width: 100%;
   }
@@ -178,10 +173,9 @@
   .subamount {
     text-align: right;
   }
-  .later {
-    font-size: 14px;
-  }
-  .cartPrice {
+  .cartPrice,
+  .later,
+  .productName {
     font-size: 14px;
   }
   .cartPrice-remove {
@@ -194,15 +188,9 @@
   .cartHeadWrapper {
     width: 45%;
   }
-  .counter,
+  .cartPrice-remove,
   .cartQuantityWrapper,
-  .cartPrice-remove {
+  .counter {
     width: 27.5%;
-  }
-  .productName {
-    font-size: 14px;
-  }
-  .appreciate {
-    width: 100%;
   }
 }

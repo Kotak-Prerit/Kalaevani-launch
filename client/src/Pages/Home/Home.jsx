@@ -1,7 +1,7 @@
 import React, { Fragment, lazy, Suspense, useEffect, useState } from "react";
 import "./Home.css";
 import MetaData from "../../Meta/MetaData";
-// import Loader from "../../components/Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import { motion } from "framer-motion";
 import { clearErrors, getProduct } from "../../actions/productAction.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,7 @@ const Marque = lazy(() => import("../../components/Marque-top/Marque.jsx"));
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { error, products } = useSelector((state) => state.products); //loading,
+  const { error, products, loading } = useSelector((state) => state.products); //loading,
 
   useEffect(() => {
     if (error) {
@@ -77,15 +77,15 @@ const Home = () => {
 
   return (
     <Fragment>
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
-      <>
-        <MetaData title="Kalaevani" />
-        <Suspense>
-          <Marque />
-          <Navbar props={logo} />
-          {/* <motion.div className="draggable-el" drag>
+      ) : (
+        <>
+          <MetaData title="Kalaevani" />
+          <Suspense>
+            <Marque />
+            <Navbar props={logo} />
+            {/* <motion.div className="draggable-el" drag>
             <img
               src="https://i.pinimg.com/originals/90/af/ef/90afef86af7e227ca0b8fda5312c0534.gif"
               height={200}
@@ -93,49 +93,49 @@ const Home = () => {
               alt="draggable element"
             />
           </motion.div> */}
-          <Hero />
-          <IntroVid />
-          <Display />
-          <Fragment>
-            <div className="darkTheme">
-              <header className="displayHeader padding-inline">
-                <h1 className="buyArt">Latest products</h1>
-                <Link to={"/products"} className="wearArt">
-                  See all
-                </Link>
-              </header>
-              <div
-                className="hpWrapper align-center"
-                onMouseEnter={textEnter}
-                onMouseLeave={textLeave}
-              >
-                <div className="productContainer" id="container">
-                  {products &&
-                    products
-                      .slice(0, 8)
-                      .map((product) => (
-                        <Product key={product._id} product={product} />
-                      ))}
-                </div>
+            <Hero />
+            <IntroVid />
+            <Display />
+            <Fragment>
+              <div className="darkTheme">
+                <header className="displayHeader padding-inline">
+                  <h1 className="buyArt">Latest products</h1>
+                  <Link to={"/products"} className="wearArt">
+                    See all
+                  </Link>
+                </header>
+                <div
+                  className="hpWrapper align-center"
+                  onMouseEnter={textEnter}
+                  onMouseLeave={textLeave}
+                >
+                  <div className="productContainer" id="container">
+                    {products &&
+                      products
+                        .slice(0, 8)
+                        .map((product) => (
+                          <Product key={product._id} product={product} />
+                        ))}
+                  </div>
 
-                <motion.div
-                  className="cursor"
-                  variants={variants}
-                  animate={cursorVariant}
-                />
+                  <motion.div
+                    className="cursor"
+                    variants={variants}
+                    animate={cursorVariant}
+                  />
+                </div>
+                <div className="allProducts flex-center poppins">
+                  <Link to={"/products"} className="moreProducts">
+                    more products
+                  </Link>
+                </div>
               </div>
-              <div className="allProducts flex-center poppins">
-                <Link to={"/products"} className="moreProducts">
-                  more products
-                </Link>
-              </div>
-            </div>
-          </Fragment>
-          <Newsletter />
-          <Footer />
-        </Suspense>
-      </>
-      {/* )} */}
+            </Fragment>
+            <Newsletter />
+            <Footer />
+          </Suspense>
+        </>
+      )}
     </Fragment>
   );
 };

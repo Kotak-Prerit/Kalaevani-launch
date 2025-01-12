@@ -1,6 +1,5 @@
 import React from "react";
 import "./IntroVid.css";
-import productVid from "../../assets/productVid.mp4";
 
 const IntroVid = () => {
   return (
@@ -8,7 +7,10 @@ const IntroVid = () => {
       {/* Add the 'controls' attribute when the video is playing */}
       <div className="productVidWrapper">
         <video muted autoPlay className="productVid" loop controls>
-          <source src={productVid} type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dqzqrsuli/video/upload/v1736501628/productVid_v0cf8p.mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
     </div>

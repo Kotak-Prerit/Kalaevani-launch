@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+@import url(https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap);
 .aboutContainer {
   padding-block: 50px;
 }
@@ -10,7 +10,7 @@
   height: 60vh;
   margin-block: 4vh;
 }
-.content-n:nth-child(1),
+.content-n:first-child,
 .content-n:nth-child(3) {
   flex-direction: row-reverse;
 }
@@ -21,7 +21,7 @@
 }
 .contentTwo p {
   font-size: 1.5vmax;
-  font-family: "Kalam", cursive;
+  font-family: Kalam, cursive;
   color: #000;
 }
 .contentOne img {
@@ -43,7 +43,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 900;
-  animation: shine 1s linear infinite;
+  animation: 1s linear infinite shine;
 }
 .about-image {
   border-radius: 10px;
@@ -57,6 +57,10 @@
   margin-top: 10px;
 }
 @media screen and (max-width: 700px) {
+  .content-n,
+  .para-n {
+    height: auto;
+  }
   .aboutUs {
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -66,7 +70,6 @@
     font-size: 18px;
   }
   .para-n {
-    height: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -75,17 +78,14 @@
   .para-n p {
     width: 100%;
   }
-  .content-n:nth-child(1),
-  .content-n:nth-child(3),
-  .content-n {
+  .content-n,
+  .content-n:first-child,
+  .content-n:nth-child(3) {
     flex-direction: column;
   }
-  .content-n {
-    height: auto;
-  }
-  .contentOne video,
+  .about-content,
   .contentOne,
-  .about-content {
+  .contentOne video {
     height: 40vh;
   }
   .aboutContainer {

@@ -38,23 +38,21 @@
 .confirmCartItems {
   padding-top: 20px;
 }
-
 .confirmCartItemsContainer > div {
   justify-content: center;
   margin: 2vmax 0;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #d3d3d3;
   padding-block: 10px;
   width: 90%;
 }
 .confirmCartItemsContainer > div:first-child {
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #d3d3d3;
 }
 .confirmCartItemsContainer > div > img {
   width: 50px;
   height: 50px;
   object-fit: cover;
 }
-
 .confirmCartItemsContainer > div > a {
   color: #fff;
   margin: 0 2vmax;
@@ -65,22 +63,20 @@
 .orderConfirmContainer {
   width: 40%;
   border: none;
-  border-left: 1px solid lightslategray;
+  border-left: 1px solid #778899;
 }
 .orderSummary01 {
   padding-inline: 2vw;
 }
-
 .orderSummary01 > p {
   text-align: center;
-  font-family: "Apercu";
+  font-family: Apercu;
   border-bottom: 1px solid #fff;
   padding: 1vmax;
   width: 100%;
   margin: auto;
   box-sizing: border-box;
 }
-
 .orderSummary01 > div > div {
   display: flex;
   justify-content: space-between;
@@ -89,17 +85,15 @@
 .orderSummary01 > div > div > span {
   color: #fff;
 }
-
 .orderSummaryTotal {
   display: flex;
   justify-content: space-between;
   border-top: 1px solid #fff;
   padding: 2vmax 0;
 }
-
 .orderSummary01 > button {
   background: #222;
-  color: white;
+  color: #fff;
   width: 100%;
   padding: 20px 30px;
   border: none;
@@ -119,12 +113,12 @@
 .orderSummaryTotal span {
   font-weight: 700;
 }
-
 @media screen and (max-width: 850px) {
   .confirmOrderPage {
     flex-direction: column;
   }
   .ShippingInfoContainer,
+  .confirmCartItemsContainer > div,
   .orderConfirmContainer {
     width: 100%;
   }
@@ -134,9 +128,6 @@
   }
   .orderSummary01 {
     padding: 0;
-  }
-  .confirmCartItemsContainer > div {
-    width: 100%;
   }
   .cProduct {
     width: 45%;
