@@ -11,6 +11,9 @@
 .reviewCard:nth-child(1) {
   border-top: 1px solid #fff;
 }
+.reviewCard:nth-last-child() {
+  border-bottom: none;
+}
 .nameAndReview {
   text-align: left;
   width: 100%;

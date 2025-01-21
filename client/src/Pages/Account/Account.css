@@ -141,4 +141,22 @@
   .userProfile {
     left: 20px;
   }
+  .accountHeader {
+    height: 30vh;
+  }
+  .nameEmail {
+    margin: 7% 0 0 40px;
+  }
+  .username {
+    font-size: 18px;
+  }
+  .useremail {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .userProfile {
+    height: 70px;
+    width: 70px;
+  }
 }

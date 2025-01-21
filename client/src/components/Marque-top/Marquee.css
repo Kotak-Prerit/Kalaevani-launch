@@ -3,7 +3,7 @@
   width: 100%;
   background: #000;
   color: #fff;
-  height: 50px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,7 @@
 }
 .dst {
   margin-right: 10px;
-  font-size: 20px;
+  font-size: 18px;
 }
 @media screen and (max-width: 768px) {
   .marquee {

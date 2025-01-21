@@ -13,7 +13,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import logoWhite from "../../assets/kalaevaniWhite.png";
 import { Slider } from "@mui/material";
 import { LuSearch } from "react-icons/lu";
-// import Loader from "../../components/Loader/Loader";
 
 function Products() {
   const dispatch = useDispatch();
@@ -96,9 +95,6 @@ function Products() {
 
   return (
     <Fragment>
-      {/* {loading ? (
-        <Loader />
-      ) : ( */}
       <>
         <MetaData title="All Products" />
         <div className="allProductWrapper">
@@ -177,7 +173,6 @@ function Products() {
 
         <Footer />
       </>
-      {/* )} */}
     </Fragment>
   );
 }

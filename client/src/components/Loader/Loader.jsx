@@ -1,45 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Loader.css";
 
 const Loader = () => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Simulate loading progress
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 100) {
+          return prev + 1; // Increment progress
+        } else {
+          clearInterval(interval); // Stop when it reaches 100
+          return 100;
+        }
+      });
+    }, 30); // Adjust speed as needed
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="loader-main">
-      <div className="dog">
-        <div className="dog__paws">
-          <div className="dog__bl-leg leg">
-            <div className="dog__bl-paw paw"></div>
-            <div className="dog__bl-top top"></div>
-          </div>
-          <div className="dog__fl-leg leg">
-            <div className="dog__fl-paw paw"></div>
-            <div className="dog__fl-top top"></div>
-          </div>
-          <div className="dog__fr-leg leg">
-            <div className="dog__fr-paw paw"></div>
-            <div className="dog__fr-top top"></div>
-          </div>
-        </div>
-
-        <div className="dog__body">
-          <div className="dog__tail"></div>
-        </div>
-
-        <div className="dog__head">
-          <div className="dog__snout">
-            <div className="dog__eyes">
-              <div className="dog__eye-l"></div>
-              <div className="dog__eye-r"></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="dog__head-c">
-          <div className="dog__ear-r"></div>
-          <div className="dog__ear-l"></div>
-        </div>
+      <div style={styles.progressBar}>
+        <div
+          style={{
+            ...styles.progress,
+            width: `${progress}%`,
+          }}
+        ></div>
       </div>
+      <p style={styles.percentage} className="poppins">
+        {progress}%
+      </p>
     </div>
   );
+};
+
+const styles = {
+  progressBar: {
+    width: "80%",
+    height: "10px",
+    backgroundColor: "#ddd",
+    borderRadius: "5px",
+    overflow: "hidden",
+    marginBottom: "10px",
+  },
+  progress: {
+    height: "100%",
+    backgroundColor: "#4caf50",
+    transition: "width 0.1s ease-in-out",
+  },
+  percentage: {
+    fontSize: "18px",
+    fontWeight: "bold",
+  },
 };
 
 export default Loader;

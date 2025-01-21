@@ -23,7 +23,7 @@
 .hero h1,
 .hero h2 {
   color: transparent;
-  background: url("https://i.pinimg.com/originals/0d/fb/30/0dfb30f4aed56ed3d4419d23f6be7318.gif")
+  background: url("https://i.pinimg.com/originals/1f/a8/4f/1fa84f1d7d4ad96dd51f81804847967a.gif")
     no-repeat;
   background-size: cover;
   background-clip: initial;
@@ -36,11 +36,13 @@
 .hero h1 {
   z-index: 2;
   font-size: 10vw;
+  background-position: top;
 }
 
 .hero h2 {
   z-index: 2;
   font-size: 12vw;
+  background-position: bottom;
 }
 
 #hero-canvas {

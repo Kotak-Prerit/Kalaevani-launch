@@ -74,7 +74,7 @@ const ProductImages = () => {
           <BsArrowLeftShort />
         </button>
         <TransformWrapper>
-          {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+          {({ zoomIn, zoomOut, resetTransform }) => (
             <React.Fragment>
               <TransformComponent>
                 <motion.img
@@ -82,13 +82,16 @@ const ProductImages = () => {
                   alt={`${currentIndex} Slide`}
                   className="image"
                   draggable="false"
-                  initial={{ scale: 1 }}
-                  whileTap={{ scale: 2 }}
-                  drag={true}
-                  dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }}
-                  dragSnapBack={true}
                 />
               </TransformComponent>
+              <div className="zoomControls">
+                <button className="zoomButton zoomIn" onClick={zoomIn}>
+                  +
+                </button>
+                <button className="zoomButton zoomOut" onClick={zoomOut}>
+                  -
+                </button>
+              </div>
             </React.Fragment>
           )}
         </TransformWrapper>

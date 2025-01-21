@@ -373,6 +373,7 @@ select:focus {
 .fcc,
 .reviewHeading {
   text-transform: uppercase;
+  z-index: 5;
 }
 .item {
   min-height: 40rem;
@@ -435,6 +436,7 @@ select:focus {
   position: absolute;
   top: 50px;
   left: 15px;
+  z-index: 5;
 }
 .review-ratings {
   background: #111;
@@ -455,7 +457,7 @@ select:focus {
   font-size: 14px;
   margin-left: 10px;
 }
-.materials p {
+.materials span {
   height: 13px;
   width: 13px;
   border-radius: 100px;
@@ -463,22 +465,22 @@ select:focus {
   box-shadow: 0 0 0 4px #000;
   cursor: pointer;
 }
-.materials p::before {
+.materials span::before {
   content: "";
 }
-.materials p:first-child {
+.materials span:first-child {
   position: absolute;
   top: 55%;
   left: -5px;
   animation: 1s ease-in-out infinite forwards pop;
 }
-.materials p:nth-child(2) {
+.materials span:nth-child(2) {
   position: absolute;
   top: 55%;
   right: -5px;
   animation: 1s ease-in-out 0.3s infinite forwards pop;
 }
-.materials p:nth-child(3) {
+.materials span:nth-child(3) {
   position: absolute;
   top: 85%;
   left: -5px;
@@ -533,6 +535,7 @@ select:focus {
 .productLink {
   width: 24%;
 }
+
 @media screen and (max-width: 1000px) {
   .details-container {
     width: 50%;
@@ -593,8 +596,17 @@ select:focus {
     margin-left: 0;
     font-size: 12px;
   }
+  .fcc {
+    font-size: 20px;
+  }
+  .click {
+    top: 45px;
+  }
+  .review-container {
+    padding: 4vw;
+  }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 415px) {
   .link {
     font-size: large;
   }
@@ -615,7 +627,10 @@ select:focus {
     padding-inline: 5px;
   }
   .fcc {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .click {
+    top: 35px;
   }
   .atc-bn {
     height: 50px;
@@ -632,10 +647,16 @@ select:focus {
     height: 130vh;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 335px) {
   .product_img {
     height: 55vh;
     width: auto;
+  }
+  .fcc {
+    font-size: 14px;
+  }
+  .click {
+    font-size: 12px;
   }
 }
 .sizeImage button {

@@ -86,6 +86,9 @@ html.lenis body {
 .flex {
   display: flex;
 }
+.container {
+  position: relative;
+}
 .hnav-100 {
   height: calc(100vh - 100px);
 }

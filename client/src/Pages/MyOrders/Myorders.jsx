@@ -3,7 +3,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import "./myOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
-import Loader from "../../components/Loader/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import MetaData from "../../Meta/MetaData";
@@ -14,7 +13,7 @@ import logo from "../../assets/kalaevaniBlack.png";
 const MyOrders = () => {
   const dispatch = useDispatch();
 
-  const { loading, error, orders } = useSelector((state) => state.myOrders);
+  const { error, orders } = useSelector((state) => state.myOrders);
 
   const columns = [
     {
@@ -94,26 +93,21 @@ const MyOrders = () => {
   return (
     <Fragment>
       <MetaData title={` - Orders`} />
-
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="myOrdersContainer">
-          <Navbar props={logo} />
-          <div className="myOrdersPage">
-            {/* Make the table responsive */}
-            <div className="table-responsive">
-              <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={10}
-                disableSelectionOnClick
-                className="myOrdersTable poppins"
-              />
-            </div>
+      <div className="myOrdersContainer">
+        <Navbar props={logo} />
+        <div className="myOrdersPage">
+          {/* Make the table responsive */}
+          <div className="table-responsive">
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableSelectionOnClick
+              className="myOrdersTable poppins"
+            />
           </div>
         </div>
-      )}
+      </div>
     </Fragment>
   );
 };

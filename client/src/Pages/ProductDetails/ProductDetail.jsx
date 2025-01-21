@@ -17,7 +17,6 @@ import ReactStars from "react-stars";
 import ReviewCard from "../../components/Reviews/ReviewCard";
 import { toast } from "react-toastify";
 import MetaData from "../../Meta/MetaData";
-import Loader from "../../components/Loader/Loader";
 import { addItemsToCart } from "../../actions/cartAction";
 import Product from "../../components/ProductCard/ProductCard";
 import { HiOutlinePlusCircle } from "react-icons/hi2";
@@ -36,9 +35,7 @@ import sizeChart from "../../assets/sizechart.png";
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { loading, product, error } = useSelector(
-    (state) => state.productDetails
-  );
+  const { product, error } = useSelector((state) => state.productDetails);
 
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
@@ -133,6 +130,11 @@ const ProductDetails = () => {
   }, [location]);
 
   const reviewSubmitHandler = () => {
+    if (!rating || !comment.trim()) {
+      toast.error("Please write a review.");
+      return; // Don't proceed with the form submission if validation fails
+    }
+
     const myForm = new FormData();
     myForm.set("rating", rating);
     myForm.set("comment", comment);
@@ -190,316 +192,302 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
-      {loading ? (
-        <Loader />
-      ) : (
-        <Fragment>
-          <MetaData title={` ${product.name} `} />
-          <Navbar props={logo} />
-          <div className="sp-details poppins">
-            <div className="navigator">
-              <p className="productTitle bebas">{product.name}</p>
-            </div>
-            <p className="stock-check">{stockStatus()}</p>
-            <div className="pdRatings flex-center" style={{ gap: "5px" }}>
-              <ReactStars
-                {...options}
-                size={window.innerWidth < 400 ? 15 : 20}
-              />{" "}
-              <span className="sp-ratings">
-                ({product.numberOfReviews} Reviews)
-              </span>
-            </div>
-            <div className="sizeImage">
-              <button onClick={openSizeChart}>size chart</button>
+      <Fragment>
+        <MetaData title={` ${product.name} `} />
+        <Navbar props={logo} />
+        <div className="sp-details poppins">
+          <div className="navigator">
+            <p className="productTitle bebas">{product.name}</p>
+          </div>
+          <span className="stock-check">{stockStatus()}</span>
+          <div className="pdRatings flex-center" style={{ gap: "5px" }}>
+            <ReactStars {...options} size={window.innerWidth < 400 ? 15 : 20} />{" "}
+            <span className="sp-ratings">
+              ({product.numberOfReviews} Reviews)
+            </span>
+          </div>
+          <div className="sizeImage">
+            <button onClick={openSizeChart}>size chart</button>
+          </div>
+        </div>
+        {sizeChartIsOpen && (
+          <div className="sizeChartPopup">
+            <div className="popupOverlay" onClick={closeSizeChart}></div>
+            <div className="popupContent">
+              <button className="closeButton" onClick={closeSizeChart}>
+                X
+              </button>
+              <img src={sizeChart} alt="Size Chart" />
             </div>
           </div>
-          {sizeChartIsOpen && (
-            <div className="sizeChartPopup">
-              <div className="popupOverlay" onClick={closeSizeChart}></div>
-              <div className="popupContent">
-                <button className="closeButton" onClick={closeSizeChart}>
-                  X
-                </button>
-                <img src={sizeChart} alt="Size Chart" />
-              </div>
-            </div>
-          )}
-          <section className="sp_Hero">
-            <div className="showcase_img_Container">
-              <div className="showcase_img">
-                {showcaseImage && (
-                  <img
-                    src={showcaseImage}
-                    alt={product.name}
-                    className="product_img"
-                  />
-                )}
-                <h1 className="product_title futuraLt">{product.name}</h1>
-              </div>
-              <div className="btns">
-                <div className="priceAndSize Apercu">
-                  <div className="priceContainer">
-                    <p className="price ">&#8377; {product.price}</p>
-                  </div>
-                  <div className="pdCounter">
-                    <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
-                    <button onClick={increaseQuantity}>+</button>
-                  </div>
-                  <div className="sizeContainer">
-                    <select
-                      className="size black poppins"
-                      value={size}
-                      onChange={handleSizeChange}
-                    >
-                      <option className="size-option" value="">
-                        Size
-                      </option>
-                      {product.sizes.map((size, i) => (
-                        <option
-                          key={i}
-                          className="size-option"
-                          value={size.name}
-                        >
-                          {size.name}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="dropdown-btn"></span>
-                  </div>
-                </div>
-                <div className="atc-bn poppins">
-                  <div className="atc">
-                    <button
-                      className="atc-btn link white"
-                      disabled={product.Stock < 1 ? true : false}
-                      onClick={addToCartHandler}
-                    >
-                      {product.Stock > 0 ? "Add to cart" : "Not available"}
-                    </button>
-                  </div>
-                  <div className="bn">
-                    <button
-                      className="detailsButton black poppins"
-                      onClick={scrollToProductDetail}
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="slider">
-            <div className="slider-header">
-              <h1 className="h1 futuraLt"> Close look 👀</h1>
-              <MdOutlineDoubleArrow className="drag-arrow" />
-            </div>
-            <motion.div className="draggable-carousel" ref={carousel}>
-              <motion.div
-                drag="x"
-                dragConstraints={{ right: 0, left: -1600 }}
-                className="inner-carousel"
-              >
-                {product.images &&
-                  product.images.slice(0, 4).map((item, i) => (
-                    <motion.div className="item" key={i}>
-                      <img
-                        src={item.url}
-                        alt={`${i} Slide`}
-                        className="image"
-                        draggable="false"
-                      />
-                      <Link
-                        to={`/product/${product._id}/images`}
-                        className="td-none"
-                      >
-                        <HiOutlinePlusCircle className="productZoom" />
-                      </Link>
-                    </motion.div>
-                  ))}
-              </motion.div>
-            </motion.div>
-          </section>
-          <section className="product-Detail" ref={productDetailRef}>
-            <h1 className="fcc futuraLt">fabric / care & Artwork Meaning</h1>
-            <p className="click Apercu">Click on the blinking buttons</p>
-            <div className="details-container flex-center">
-              <img src={productImage} alt="" className="three-dimensional" />
-              <Fragment>
-                <div className="materials poppins">
-                  <p onClick={() => openPopup("fabric")}></p>
-                  <p onClick={() => openPopup("care")}></p>
-                  <p onClick={() => openPopup("artwork")}></p>
-                </div>
-                <MaterialPopup
-                  isOpen={popupIsOpen}
-                  onClose={closePopup}
-                  materialName={selectedMaterial}
+        )}
+        <section className="sp_Hero">
+          <div className="showcase_img_Container">
+            <div className="showcase_img">
+              {showcaseImage && (
+                <img
+                  src={showcaseImage}
+                  alt={product.name}
+                  className="product_img"
                 />
-              </Fragment>
-            </div>
-          </section>
-          <hr />
-
-          <Fragment>
-            <div className="darkTheme">
-              <header className="displayHeader padding-inline">
-                <h1 className="buyArt">you may also like</h1>
-                <Link to={"/products"} className="wearArt">
-                  See all
-                </Link>
-              </header>
-              <div className="hpWrapper align-center">
-                <div className="productContainer" id="container">
-                  {products &&
-                    products.map((product, i) => (
-                      <Product key={i} product={product} />
-                    ))}
-                </div>
-              </div>
-              <div className="allProducts flex-center poppins">
-                <Link to={"/products"} className="moreProducts">
-                  more products
-                </Link>
-              </div>
-            </div>
-          </Fragment>
-          <p className="reviewHeading">Customer Reviews </p>
-
-          <section className="reviews-container">
-            <div className="review-container">
-              {product.reviews && product.reviews[0] ? (
-                <div className="reviews">
-                  <div className="review-ratings flex-center poppins">
-                    <p className="overallRating">
-                      {product.ratings.toFixed(1)}
-                    </p>
-                    <div className="reviewRatings ">
-                      <ReactStars
-                        {...options}
-                        size={window.innerWidth < 600 ? 15 : 40}
-                      />
-                      <span className="num-ratings">
-                        Based on {product.numberOfReviews} Reviews
-                      </span>
-                    </div>
-                    <button
-                      className="reviewBtn Apercu"
-                      onClick={submitReviewToggle}
-                    >
-                      Write a review
-                    </button>
-                  </div>
-                  <Dialog
-                    aria-labelledby="simple-dialog-title"
-                    open={open}
-                    onClose={submitReviewToggle}
-                    className="reviewDialog"
-                  >
-                    <DialogTitle className="t-a-c futuraLt">
-                      Share your thoughts
-                    </DialogTitle>
-                    <DialogContent className="submitDialog ">
-                      <p className="experience Apercu pb-10">
-                        Rate your experience*
-                      </p>
-                      <Rating
-                        onChange={(e) => setRating(e.target.value)}
-                        value={rating}
-                        size="large"
-                        precision={0.5}
-                        sx={{
-                          color: "#000",
-                          fontSize: "40px",
-                        }}
-                        required
-                      />
-                      <p className="writeReview Apercu">Write a review*</p>
-                      <textarea
-                        className="submitDialogTextArea"
-                        cols={20}
-                        rows={5}
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                        required
-                      ></textarea>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button color="secondary" onClick={submitReviewToggle}>
-                        Cancel
-                      </Button>
-                      <Button color="primary" onClick={reviewSubmitHandler}>
-                        Submit
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                  {product.reviews &&
-                    product.reviews.map((review, i) => (
-                      <ReviewCard review={review} key={i} />
-                    ))}
-                </div>
-              ) : (
-                <div className="noReview-container">
-                  <p className="noReviews poppins white"> No Reviews Yet </p>
-                  <div className="submit-btn-wrapper flex-center ">
-                    <button
-                      className="submit-review Apercu flex"
-                      onClick={submitReviewToggle}
-                    >
-                      Be the First One to Review
-                    </button>
-                  </div>
-                  <Dialog
-                    aria-labelledby="simple-dialog-title"
-                    open={open}
-                    onClose={submitReviewToggle}
-                    className="reviewDialog"
-                  >
-                    <DialogTitle className="t-a-c futuraLt">
-                      Share your thoughts
-                    </DialogTitle>
-                    <DialogContent className="submitDialog ">
-                      <p className="experience Apercu pb-10">
-                        Rate your experience*
-                      </p>
-                      <Rating
-                        onChange={(e) => setRating(e.target.value)}
-                        value={rating}
-                        size="large"
-                        precision={0.5}
-                        sx={{
-                          color: "#000",
-                          fontSize: "40px",
-                        }}
-                      />
-                      <p className="writeReview Apercu">Write a review*</p>
-                      <textarea
-                        className="submitDialogTextArea"
-                        cols={20}
-                        rows={5}
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                      ></textarea>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button color="secondary" onClick={submitReviewToggle}>
-                        Cancel
-                      </Button>
-                      <Button color="primary" onClick={reviewSubmitHandler}>
-                        Submit
-                      </Button>
-                    </DialogActions>
-                  </Dialog>
-                </div>
               )}
             </div>
-          </section>
+            <div className="btns">
+              <div className="priceAndSize Apercu">
+                <div className="priceContainer">
+                  <p className="price ">&#8377; {product.price}</p>
+                </div>
+                <div className="pdCounter">
+                  <button onClick={decreaseQuantity}>-</button>
+                  <input readOnly type="number" value={quantity} />
+                  <button onClick={increaseQuantity}>+</button>
+                </div>
+                <div className="sizeContainer">
+                  <select
+                    className="size black poppins"
+                    value={size}
+                    onChange={handleSizeChange}
+                  >
+                    <option className="size-option" value="">
+                      Size
+                    </option>
+                    {product.sizes.map((size, i) => (
+                      <option key={i} className="size-option" value={size.name}>
+                        {size.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="dropdown-btn"></span>
+                </div>
+              </div>
+              <div className="atc-bn poppins">
+                <div className="atc">
+                  <button
+                    className="atc-btn link white"
+                    disabled={product.Stock < 1 ? true : false}
+                    onClick={addToCartHandler}
+                  >
+                    {product.Stock > 0 ? "Add to cart" : "Not available"}
+                  </button>
+                </div>
+                <div className="bn">
+                  <button
+                    className="detailsButton black poppins"
+                    onClick={scrollToProductDetail}
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="slider">
+          <div className="slider-header">
+            <h1 className="h1 futuraLt"> Close look 👀</h1>
+            <MdOutlineDoubleArrow className="drag-arrow" />
+          </div>
+          <motion.div className="draggable-carousel" ref={carousel}>
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -1600 }}
+              className="inner-carousel"
+            >
+              {product.images &&
+                product.images.slice(0, 4).map((item, i) => (
+                  <motion.div className="item" key={i}>
+                    <img
+                      src={item.url}
+                      alt={`${i} Slide`}
+                      className="image"
+                      draggable="false"
+                    />
+                    <Link
+                      to={`/product/${product._id}/images`}
+                      className="td-none"
+                    >
+                      <HiOutlinePlusCircle className="productZoom" />
+                    </Link>
+                  </motion.div>
+                ))}
+            </motion.div>
+          </motion.div>
+        </section>
+        <section className="product-Detail" ref={productDetailRef}>
+          <h1 className="fcc futuraLt">fabric / care & Artwork Meaning</h1>
+          <p className="click Apercu">Click on the blinking buttons</p>
+          <div className="details-container flex-center">
+            <img src={productImage} alt="" className="three-dimensional" />
+            <Fragment>
+              <div className="materials poppins">
+                <span onClick={() => openPopup("fabric")}></span>
+                <span onClick={() => openPopup("care")}></span>
+                <span onClick={() => openPopup("artwork")}></span>
+              </div>
+              <MaterialPopup
+                isOpen={popupIsOpen}
+                onClose={closePopup}
+                materialName={selectedMaterial}
+              />
+            </Fragment>
+          </div>
+        </section>
+        <hr />
 
-          <Footer />
+        <Fragment>
+          <div className="darkTheme">
+            <header className="displayHeader padding-inline">
+              <h1 className="buyArt">you may also like</h1>
+              <Link to={"/products"} className="wearArt">
+                See all
+              </Link>
+            </header>
+            <div className="hpWrapper align-center">
+              <div className="productContainer" id="container">
+                {products &&
+                  products.map((product, i) => (
+                    <Product key={i} product={product} />
+                  ))}
+              </div>
+            </div>
+            <div className="allProducts flex-center poppins">
+              <Link to={"/products"} className="moreProducts">
+                more products
+              </Link>
+            </div>
+          </div>
         </Fragment>
-      )}
+        <p className="reviewHeading">Customer Reviews </p>
+
+        <section className="reviews-container">
+          <div className="review-container">
+            {product.reviews && product.reviews[0] ? (
+              <div className="reviews">
+                <div className="review-ratings flex-center poppins">
+                  <p className="overallRating">{product.ratings.toFixed(1)}</p>
+                  <div className="reviewRatings ">
+                    <ReactStars
+                      {...options}
+                      size={window.innerWidth < 600 ? 15 : 40}
+                    />
+                    <span className="num-ratings">
+                      Based on {product.numberOfReviews} Reviews
+                    </span>
+                  </div>
+                  <button
+                    className="reviewBtn Apercu"
+                    onClick={submitReviewToggle}
+                  >
+                    Write a review
+                  </button>
+                </div>
+                <Dialog
+                  aria-labelledby="simple-dialog-title"
+                  open={open}
+                  onClose={submitReviewToggle}
+                  className="reviewDialog"
+                >
+                  <DialogTitle className="t-a-c futuraLt">
+                    Share your thoughts
+                  </DialogTitle>
+                  <DialogContent className="submitDialog ">
+                    <p className="experience Apercu pb-10">
+                      Rate your experience*
+                    </p>
+                    <Rating
+                      onChange={(e) => setRating(e.target.value)}
+                      value={rating}
+                      size="large"
+                      precision={0.5}
+                      sx={{
+                        color: "#000",
+                        fontSize: "40px",
+                      }}
+                      required
+                    />
+                    <p className="writeReview Apercu">Write a review*</p>
+                    <textarea
+                      className="submitDialogTextArea"
+                      cols={20}
+                      rows={5}
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      required
+                    ></textarea>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button color="secondary" onClick={submitReviewToggle}>
+                      Cancel
+                    </Button>
+                    <Button color="primary" onClick={reviewSubmitHandler}>
+                      Submit
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+                {product.reviews &&
+                  product.reviews.map((review, i) => (
+                    <ReviewCard review={review} key={i} />
+                  ))}
+              </div>
+            ) : (
+              <div className="noReview-container">
+                <p className="noReviews poppins white"> No Reviews Yet </p>
+                <div className="submit-btn-wrapper flex-center ">
+                  <button
+                    className="submit-review Apercu flex"
+                    onClick={submitReviewToggle}
+                  >
+                    Be the First One to Review
+                  </button>
+                </div>
+                <Dialog
+                  aria-labelledby="simple-dialog-title"
+                  open={open}
+                  onClose={submitReviewToggle}
+                  className="reviewDialog"
+                >
+                  <DialogTitle className="t-a-c futuraLt">
+                    Share your thoughts
+                  </DialogTitle>
+                  <DialogContent className="submitDialog ">
+                    <p className="experience Apercu pb-10">
+                      Rate your experience*
+                    </p>
+                    <Rating
+                      onChange={(e) => setRating(e.target.value)}
+                      value={rating}
+                      size="large"
+                      precision={0.5}
+                      sx={{
+                        color: "#000",
+                        fontSize: "40px",
+                      }}
+                    />
+                    <p className="writeReview Apercu">Write a review*</p>
+                    <textarea
+                      className="submitDialogTextArea"
+                      cols={20}
+                      rows={5}
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    ></textarea>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button color="secondary" onClick={submitReviewToggle}>
+                      Cancel
+                    </Button>
+                    <Button color="primary" onClick={reviewSubmitHandler}>
+                      Submit
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <Footer />
+      </Fragment>
     </Fragment>
   );
 };

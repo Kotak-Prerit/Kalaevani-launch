@@ -97,7 +97,7 @@ const Login = () => {
                   <input
                     className="lr-input"
                     type="email"
-                    placeholder="eg : johnmayer@gmail.com"
+                    placeholder="example@gmail.com"
                     required
                     value={loginEmail}
                     onChange={(e) => setLoginEmail(e.target.value)}

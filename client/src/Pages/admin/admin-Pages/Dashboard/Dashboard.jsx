@@ -16,6 +16,7 @@ import { getAdminProducts } from "../../../../actions/productAction.js";
 import store from "../../../../store/store.js";
 import { loadUser } from "../../../../actions/userAction.js";
 import { getAllOrders } from "../../../../actions/orderAction.js";
+import PageNotFound from "../../../404/PageNotFound.jsx";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -92,9 +93,7 @@ const Dashboard = () => {
           </div>
         </div>
       ) : (
-        <div className="unauthorized flex-center Apercu">
-          <p>You don't Belong here</p>
-        </div>
+        <PageNotFound />
       )}
     </>
   );

@@ -30,10 +30,11 @@ const ReviewCard = ({ review }) => {
           </div>
         </div>
       </div>
-      <span className="comment">
-        {" "}
-        <span className="feedback"> Feedback : </span> {review.comment}
-      </span>
+      {review.comment && review.comment !== "" && (
+        <span className="comment">
+          <span className="feedback"> Feedback : </span> {review.comment}
+        </span>
+      )}
     </div>
   );
 };

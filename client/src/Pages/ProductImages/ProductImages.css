@@ -76,3 +76,32 @@
 .zoomOut {
   bottom: 20px;
 }
+
+.zoomControls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zoomButton {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.zoomButton:hover {
+  transform: scale(1.1);
+}
