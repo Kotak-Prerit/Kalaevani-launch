@@ -54,6 +54,7 @@ const ProductDetails = () => {
   const [comment, setComment] = useState("");
 
   const productDetailRef = useRef(null);
+
   const submitReviewToggle = () => {
     open ? setOpen(false) : setOpen(true);
   };

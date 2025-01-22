@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import { motion } from "framer-motion";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const ProductImages = () => {
   const navigate = useNavigate();
@@ -73,28 +72,13 @@ const ProductImages = () => {
         <button className="leftArrow" onClick={handlePrev}>
           <BsArrowLeftShort />
         </button>
-        <TransformWrapper>
-          {({ zoomIn, zoomOut, resetTransform }) => (
-            <React.Fragment>
-              <TransformComponent>
-                <motion.img
-                  src={product.images[currentIndex].url}
-                  alt={`${currentIndex} Slide`}
-                  className="image"
-                  draggable="false"
-                />
-              </TransformComponent>
-              <div className="zoomControls">
-                <button className="zoomButton zoomIn" onClick={zoomIn}>
-                  +
-                </button>
-                <button className="zoomButton zoomOut" onClick={zoomOut}>
-                  -
-                </button>
-              </div>
-            </React.Fragment>
-          )}
-        </TransformWrapper>
+        <motion.img
+          src={product.images[currentIndex].url}
+          alt={`${currentIndex} Slide`}
+          className="image"
+          draggable="false"
+        />
+
         <button className="rightArrow" onClick={handleNext}>
           <BsArrowRightShort />
         </button>

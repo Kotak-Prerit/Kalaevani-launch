@@ -12,9 +12,9 @@ const Hero = () => {
     const canvas = canvasRef.current;
     if (canvas) {
       bgRef.current = Spheres1Background(canvas, {
-        count: 200,
-        minSize: 0.3,
-        maxSize: 0.8,
+        count: 100,
+        minSize: 0.5,
+        maxSize: 0.7,
         gravity: 0,
       });
     }

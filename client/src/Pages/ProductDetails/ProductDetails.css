@@ -266,6 +266,7 @@ select:focus {
   border: none;
   border-radius: 100px;
   text-align: center;
+  height: 100%;
 }
 select:focus {
   border: none;
@@ -321,6 +322,7 @@ select:focus {
   width: 100%;
   font-weight: bolder;
 }
+
 .bn {
   background: #fff;
   border: 1px solid #000;
@@ -493,8 +495,8 @@ select:focus {
     width: 13px;
   }
   50% {
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
   }
 }
 .reviewHeading {
@@ -604,6 +606,15 @@ select:focus {
   }
   .review-container {
     padding: 4vw;
+  }
+  .dropdown-btn::before {
+    border-bottom: 6px solid #000;
+  }
+  .dropdown-btn::after {
+    border-top: 6px solid #000;
+  }
+  .detailsButton {
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 415px) {
