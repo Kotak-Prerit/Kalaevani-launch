@@ -84,32 +84,29 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // window.addEventListener("contextmenu", (e) => e.preventDefault());
+  window.addEventListener("contextmenu", (e) => e.preventDefault());
 
-  // useEffect(() => {
-  //   const handleKeyDown = (event) => {
-  //     if (
-  //       (event.ctrlKey || event.metaKey) &&
-  //       event.shiftKey &&
-  //       (event.code === "KeyJ" || event.code === "KeyI")
-  //     ) {
-  //       event.preventDefault();
-  //     }
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        event.shiftKey &&
+        (event.code === "KeyJ" || event.code === "KeyI")
+      ) {
+        event.preventDefault();
+      }
 
-  //     // Disable F12
-  //     if (event.code === "F12") {
-  //       event.preventDefault();
-  //     }
-  //   };
+      if (event.code === "F12") {
+        event.preventDefault();
+      }
+    };
 
-  //   // Add the event listener
-  //   document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
-  //   // Cleanup the event listener on component unmount
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, []);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     store.dispatch(loadUser());
