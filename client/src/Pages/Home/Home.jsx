@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { clearErrors, getProduct } from "../../actions/productAction.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,8 +13,9 @@ import Product from "../../components/ProductCard/ProductCard.jsx";
 import Newsletter from "../../components/Newsletter/Newsletter.jsx";
 import Footer from "../../components/Footer/Footer";
 import Marque from "../../components/Marque-top/Marque.jsx";
-import IntroVid from "../../components/IntroVid/IntroVid.jsx";
-import Display from "../../components/display/Display.jsx";
+
+const Display = lazy(() => import("../../components/display/Display.jsx"));
+const IntroVid = lazy(() => import("../../components/IntroVid/IntroVid.jsx"));
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -86,7 +87,9 @@ const Home = () => {
             />
           </motion.div> */}
         <Hero />
-        <IntroVid />
+        <Suspense fallback={<p>Loading...</p>}>
+          <IntroVid />
+        </Suspense>
         <Fragment>
           <div className="darkTheme">
             <header className="displayHeader padding-inline">
@@ -122,7 +125,9 @@ const Home = () => {
             </div>
           </div>
         </Fragment>
-        <Display />
+        <Suspense fallback={<p>Loading...</p>}>
+          <Display />
+        </Suspense>
 
         <Newsletter />
         <Footer />

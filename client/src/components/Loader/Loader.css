@@ -10,3 +10,6 @@
   gap: 10px;
   z-index: 1000;
 }
+.progressPercentage {
+  font-family: "Poppins", sans-serif;
+}

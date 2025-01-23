@@ -1,5 +1,5 @@
 import "./App.css";
-import { Fragment, useEffect, useState, lazy } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Lenis from "lenis";
 import { HelmetProvider } from "react-helmet-async";
@@ -7,61 +7,41 @@ import { ToastContainer } from "react-toastify";
 import { loadUser } from "./actions/userAction";
 import "react-toastify/dist/ReactToastify.css";
 import store from "./store/store";
-const Home = lazy(() => import("./Pages/Home/Home"));
-const Products = lazy(() => import("./Pages/Products/Products"));
-const Login = lazy(() => import("./Pages/Login/Login"));
-const Account = lazy(() => import("./Pages/Account/Account"));
-const UpdateProfile = lazy(() => import("./Pages/updateProfile/UpdateProfile"));
-const UpdatePassword = lazy(() =>
-  import("./Pages/UpdatePassword/UpdatePassword")
-);
-const PageNotFound = lazy(() => import("./Pages/404/PageNotFound"));
-const ForgotPassword = lazy(() =>
-  import("./Pages/ForgotPassword/ForgotPassword")
-);
-const ResetPassword = lazy(() => import("./Pages/ResetPassword/ResetPassword"));
-const Cart = lazy(() => import("./Pages/Cart/Cart"));
-const Shipping = lazy(() => import("./Pages/Shipping/Shipping"));
-const About = lazy(() => import("./Pages/About/About"));
-const ConfirmOrder = lazy(() => import("./Pages/confirmOrder/confirmOrder"));
-const Payment = lazy(() => import("./Pages/Payment/Payment"));
-const ShippingPolicy = lazy(() =>
-  import("./Pages/ShippingReturn/ShippingPolicy")
-);
-const Contact = lazy(() => import("./Pages/Contact/Contact"));
-const PrivacyPolicy = lazy(() => import("./Pages/PrivacyPolicy/PrivacyPolicy"));
-const Terms = lazy(() => import("./Pages/TermsAndConditions/Terms"));
-const ReturnRefund = lazy(() => import("./Pages/ReturnAndRefund/ReturnRefund"));
-const Wholesale = lazy(() => import("./Pages/Wholesale/Wholesale"));
-const ProductDetails = lazy(() =>
-  import("./Pages/ProductDetails/ProductDetail")
-);
-const ProductImages = lazy(() => import("./Pages/ProductImages/ProductImages"));
-const Collab = lazy(() => import("./Pages/Collab/Collab"));
-const Dashboard = lazy(() =>
-  import("./Pages/admin/admin-Pages/Dashboard/Dashboard")
-);
-const ProductList = lazy(() =>
-  import("./Pages/admin/admin-Pages/ProductList/ProductList")
-);
-const NewProduct = lazy(() =>
-  import("./Pages/admin/admin-Pages/NewProduct/NewProduct")
-);
-const OrderList = lazy(() =>
-  import("./Pages/admin/admin-Pages/OrderList/OrderList")
-);
-const Unauthorized = lazy(() => import("./utils/Route/unauthorize"));
-const Faq = lazy(() => import("./Pages/Faq/Faq"));
-const UserList = lazy(() =>
-  import("./Pages/admin/admin-Pages/UserList/UserList")
-);
-const Success = lazy(() => import("./Pages/success/Success"));
-const MyOrders = lazy(() => import("./Pages/MyOrders/Myorders"));
-const OrderDetails = lazy(() => import("./Pages/OrderDetails/OrderDetails"));
-const ProcessOrder = lazy(() =>
-  import("./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx")
-);
-const Loader = lazy(() => import("./components/Loader/Loader.jsx"));
+import Home from "./Pages/Home/Home";
+import Products from "./Pages/Products/Products";
+import Login from "./Pages/Login/Login";
+import Account from "./Pages/Account/Account";
+import UpdateProfile from "./Pages/updateProfile/UpdateProfile";
+import UpdatePassword from "./Pages/UpdatePassword/UpdatePassword";
+import PageNotFound from "./Pages/404/PageNotFound";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
+import Cart from "./Pages/Cart/Cart";
+import Shipping from "./Pages/Shipping/Shipping";
+import About from "./Pages/About/About";
+import ConfirmOrder from "./Pages/confirmOrder/confirmOrder";
+import Payment from "./Pages/Payment/Payment";
+import ShippingPolicy from "./Pages/ShippingReturn/ShippingPolicy";
+import Contact from "./Pages/Contact/Contact";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import Terms from "./Pages/TermsAndConditions/Terms";
+import ReturnRefund from "./Pages/ReturnAndRefund/ReturnRefund";
+import Wholesale from "./Pages/Wholesale/Wholesale";
+import ProductDetails from "./Pages/ProductDetails/ProductDetail";
+import ProductImages from "./Pages/ProductImages/ProductImages";
+import Collab from "./Pages/Collab/Collab";
+import Dashboard from "./Pages/admin/admin-Pages/Dashboard/Dashboard";
+import ProductList from "./Pages/admin/admin-Pages/ProductList/ProductList";
+import NewProduct from "./Pages/admin/admin-Pages/NewProduct/NewProduct";
+import OrderList from "./Pages/admin/admin-Pages/OrderList/OrderList";
+import Unauthorized from "./utils/Route/unauthorize";
+import Faq from "./Pages/Faq/Faq";
+import UserList from "./Pages/admin/admin-Pages/UserList/UserList";
+import Success from "./Pages/success/Success";
+import MyOrders from "./Pages/MyOrders/Myorders";
+import OrderDetails from "./Pages/OrderDetails/OrderDetails";
+import ProcessOrder from "./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx";
+import Loader from "./components/Loader/Loader.jsx";
 
 function App() {
   const lenis = new Lenis();

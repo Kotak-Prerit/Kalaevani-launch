@@ -30,7 +30,7 @@ const Loader = () => {
           }}
         ></div>
       </div>
-      <p style={styles.percentage} className="poppins">
+      <p style={styles.percentage} className="progressPercentage">
         {progress}%
       </p>
     </div>
@@ -40,8 +40,8 @@ const Loader = () => {
 const styles = {
   progressBar: {
     width: "80%",
-    height: "10px",
-    backgroundColor: "#ddd",
+    height: "7px",
+    backgroundColor: "#000",
     borderRadius: "5px",
     overflow: "hidden",
     marginBottom: "10px",
