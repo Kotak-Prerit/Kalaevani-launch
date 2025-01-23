@@ -3,12 +3,12 @@ import "./IntroVid.css";
 
 const IntroVid = () => {
   return (
-    <div className="container">
+    <div className="Vidcontainer">
       {/* Add the 'controls' attribute when the video is playing */}
       <div className="productVidWrapper">
         <video muted autoPlay className="productVid" loop controls>
           <source
-            src="https://res.cloudinary.com/dqzqrsuli/video/upload/v1736501628/productVid_v0cf8p.mp4"
+            src="https://ik.imagekit.io/okvmlnlrf8/assets/productVid.mp4?updatedAt=1737631606304"
             type="video/mp4"
           />
         </video>

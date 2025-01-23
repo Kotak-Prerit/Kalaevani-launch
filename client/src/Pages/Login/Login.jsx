@@ -120,17 +120,26 @@ const Login = () => {
                       {visible ? <FaRegEye /> : <FaRegEyeSlash />}
                     </div>
                   </div>
-                  <Link to="/password/forgot" className="forgot-password">
+                  {/* <Link to="/password/forgot" className="forgot-password">
                     Forget Password ?
-                  </Link>
+                  </Link> */}
+                  <div className="tAndc flex-center">
+                    <p className="forgot-password">
+                      By signing in you agree to our{" "}
+                      <Link to={"/terms"} className="poppins">
+                        Terms & conditions
+                      </Link>
+                    </p>
+                  </div>
+
+                  <input type="submit" value="Log in" className="sign-in" />
                   <button
-                    className="toSignUp"
+                    className="toSignUp flex-center"
                     type="button"
                     onClick={() => setShowSignIn(false)}
                   >
                     Don't have an account? Sign up
                   </button>
-                  <input type="submit" value="Log in" className="sign-in" />
                 </form>
               </div>
             ) : (

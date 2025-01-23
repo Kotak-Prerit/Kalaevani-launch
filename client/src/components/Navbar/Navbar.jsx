@@ -171,9 +171,6 @@ const Navbar = (props) => {
               <div className="sizeChartPopup">
                 <div className="popupOverlay" onClick={closeSizeChart}></div>
                 <div className="popupContent">
-                  <button className="closeButton" onClick={closeSizeChart}>
-                    X
-                  </button>
                   <img src={sizeChart} alt="Size Chart" />
                 </div>
               </div>

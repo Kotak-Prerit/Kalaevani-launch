@@ -6,6 +6,7 @@
   justify-content: center;
   background: #111;
   transition: all 0.3s ease;
+  margin-top: -10px;
 }
 .Nl-main {
   height: 100vh;
