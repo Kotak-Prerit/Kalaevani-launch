@@ -11,9 +11,9 @@ import {
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstants";
-import Loader from "../../components/Loader/Loader";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 
 const UpdatePassword = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const UpdatePassword = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <QuoteLoader />
       ) : (
         <Fragment>
           <MetaData title={"Update Password"} />

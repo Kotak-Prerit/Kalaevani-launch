@@ -3,7 +3,6 @@ const catchAsyncError = require("../middleware/catchAsyncError");
 const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
-const crypto = require("crypto");
 
 // Register a User
 exports.registerUser = catchAsyncError(async (req, res, next) => {
@@ -16,6 +15,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   }).catch((err) => {
     throw new ErrorHandler("Error creating user", 500);
   });
+
   sendToken(user, 201, res);
 });
 

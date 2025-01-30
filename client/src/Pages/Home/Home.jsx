@@ -1,4 +1,11 @@
-import React, { Fragment, useEffect, useState, lazy, Suspense } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  lazy,
+  startTransition,
+  Suspense,
+} from "react";
 import { motion } from "framer-motion";
 import { clearErrors, getProduct } from "../../actions/productAction.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,28 +13,39 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import MetaData from "../../Meta/MetaData";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import Navbar from "../../components/Navbar/Navbar";
-import Hero from "../../components/Hero/Hero";
 import Product from "../../components/ProductCard/ProductCard.jsx";
-import Newsletter from "../../components/Newsletter/Newsletter.jsx";
 import Footer from "../../components/Footer/Footer";
 import Marque from "../../components/Marque-top/Marque.jsx";
+import Hero from "../../components/Hero/Hero";
+import IntroVid from "../../components/IntroVid/IntroVid";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader.jsx";
 
 const Display = lazy(() => import("../../components/display/Display.jsx"));
-const IntroVid = lazy(() => import("../../components/IntroVid/IntroVid.jsx"));
+const Newsletter = lazy(() =>
+  import("../../components/Newsletter/Newsletter.jsx")
+);
+
+Display.preload = () => import("../../components/display/Display.jsx");
+Newsletter.preload = () => import("../../components/Newsletter/Newsletter.jsx");
 
 const Home = () => {
   const dispatch = useDispatch();
   const { error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
+    Display.preload();
+    Newsletter.preload();
+
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct());
+    startTransition(() => {
+      dispatch(getProduct());
+    });
   }, [dispatch, error]);
 
   const [mousePosition, setMousePosition] = useState({
@@ -87,11 +105,9 @@ const Home = () => {
             />
           </motion.div> */}
         <Hero />
-        <Suspense fallback={<p>Loading...</p>}>
-          <IntroVid />
-        </Suspense>
+        <IntroVid />
         <Fragment>
-          <div className="darkTheme">
+          <div className="LightTheme">
             <header className="displayHeader padding-inline">
               <h1 className="buyArt">Latest products</h1>
               <Link to={"/products"} className="wearArt">
@@ -125,11 +141,10 @@ const Home = () => {
             </div>
           </div>
         </Fragment>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<QuoteLoader />}>
           <Display />
+          <Newsletter />
         </Suspense>
-
-        <Newsletter />
         <Footer />
       </>
     </Fragment>

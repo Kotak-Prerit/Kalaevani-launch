@@ -23,12 +23,21 @@ const userSchema = new mongoose.Schema({
     minLength: [8, "Password should be greater than 8 characters"],
     select: false,
   },
-  emailVerified: {
-    type: Boolean,
-    default: false,
-  },
-  emailVerificationToken: {
+  verifyOtp: {
     type: String,
+    default: "",
+  },
+  verifyOtpExpireAt: {
+    type: Number,
+    default: 0,
+  },
+  resetOtp: {
+    type: String,
+    default: "",
+  },
+  resetOtpExpireAt: {
+    type: Number,
+    default: 0,
   },
   role: {
     type: String,
@@ -58,7 +67,7 @@ userSchema.pre("save", async function (next) {
 // JWT TOKEN
 userSchema.methods.getJWTToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_KEY, {
-    expiresIn: process.env.JWT_EXPIRE,
+    expiresIn: "7d",
   });
 };
 

@@ -1,13 +1,12 @@
-import React, { Suspense, useRef, useState, lazy } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import project from "../../assets/project.gif";
 import "./Contact.css";
 import { toast } from "react-toastify";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import MetaData from "../../Meta/MetaData";
-
-const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
-const Footer = lazy(() => import("../../components/Footer/Footer"));
+import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 function Contact() {
   const form = useRef();
@@ -61,7 +60,7 @@ function Contact() {
   };
 
   return (
-    <Suspense>
+    <React.Fragment>
       <MetaData title="Contact Us" />
       <Navbar props={logo} />
       <div className="contact-main" id="contact">
@@ -165,7 +164,7 @@ function Contact() {
         </div>
       </div>
       <Footer />
-    </Suspense>
+    </React.Fragment>
   );
 }
 

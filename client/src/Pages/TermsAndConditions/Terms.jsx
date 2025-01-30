@@ -1,7 +1,7 @@
 import React, { Suspense, Fragment, lazy } from "react";
 import { Link } from "react-router-dom";
 import "../PrivacyPolicy/Privacy.css";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));

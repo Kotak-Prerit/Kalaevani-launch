@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import notFound from "../../assets/404.png";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import "./PageNotFound.css";
 import { Link } from "react-router-dom";
 import MetaData from "../../Meta/MetaData";

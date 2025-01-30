@@ -41,7 +41,7 @@ const ProductList = () => {
 
     if (isDeleted) {
       toast.success("Order deleted successfully");
-      navigate("/admin/orders");
+      navigate("/admin/orders897451569418741");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { getOrderDetails, clearErrors } from "../../actions/orderAction";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 
 const OrderDetails = () => {
   const { order, error } = useSelector((state) => state.orderDetails);

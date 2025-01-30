@@ -2,7 +2,6 @@ const Product = require("../models/productmodel");
 const ErroHandler = require("../utils/errorhandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const apiFeatures = require("../utils/apifeatures");
-const cloudinary = require("cloudinary");
 
 // Get All Products
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {

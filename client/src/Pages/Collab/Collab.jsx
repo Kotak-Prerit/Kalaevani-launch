@@ -4,7 +4,8 @@ import collab from "../../assets/collab.png";
 import "../Contact/Contact.css";
 import { toast } from "react-toastify";
 import MetaData from "../../Meta/MetaData";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));
 const Footer = lazy(() => import("../../components/Footer/Footer"));
@@ -13,6 +14,8 @@ function Contact() {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+
+  window.scrollTo(0, 0);
 
   const validateForm = () => {
     const formData = form.current;
@@ -61,111 +64,113 @@ function Contact() {
   };
 
   return (
-    <Suspense>
+    <>
       <MetaData title="Collab with Kalaevani" />
-      <Navbar props={logo} />
-      <div className="contact-main" id="contact">
-        <p className="contact-page-text">
-          {" "}
-          <img src={collab} alt="gif" className="prjctgif" />
-          collab with us
-        </p>
-        <div className="contact-container">
-          <div className="form-heading">
-            <div className="brief_us_wrapper">
-              <p className="brief_us poppins">Write your brief below</p>
+      <Suspense fallback={<QuoteLoader />}>
+        <Navbar props={logo} />
+        <div className="contact-main" id="contact">
+          <p className="contact-page-text">
+            {" "}
+            <img src={collab} alt="gif" className="prjctgif" />
+            collab with us
+          </p>
+          <div className="contact-container">
+            <div className="form-heading">
+              <div className="brief_us_wrapper">
+                <p className="brief_us poppins">Write your brief below</p>
+              </div>
+              <div className="tagline_wrapper">
+                <p className="tagline poppins">
+                  Our team will reach out to you in 48 business hours...
+                </p>
+              </div>
             </div>
-            <div className="tagline_wrapper">
-              <p className="tagline poppins">
-                Our team will reach out to you in 48 business hours...
-              </p>
-            </div>
+            <form className="form poppins" onSubmit={sendEmail} ref={form}>
+              <div className="input_container">
+                <div className="form_index">01</div>
+                <div className="input_que">
+                  <p className="form_que">What's your Brand name?*</p>
+                  <input
+                    type="text"
+                    name="brand_name"
+                    id="name"
+                    placeholder="Milton"
+                    className="input_name"
+                    min={3}
+                    max={25}
+                    required
+                  />
+                  {errors.name && (
+                    <div style={{ color: "red" }}>{errors.name}</div>
+                  )}
+                </div>
+              </div>
+              <div className="input_container">
+                <div className="form_index">02</div>
+                <div className="input_que">
+                  <p className="form_que">What's your business email?*</p>
+                  <input
+                    type="email"
+                    className="contact-email"
+                    name="business_email"
+                    placeholder="milton@gmail.com"
+                    id="email"
+                    required
+                    pattern="^[a-zA-Z0-9._%+-]{3,}@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$"
+                  />
+                  {errors.email && (
+                    <div style={{ color: "red" }}>{errors.email}</div>
+                  )}
+                </div>
+              </div>
+              <div className="input_container">
+                <div className="form_index">03</div>
+                <div className="input_que">
+                  <p className="form_que">
+                    What's your business contact number?{" "}
+                    {/* <span className="optional">optional</span> */}
+                  </p>
+                  <input
+                    type="tel"
+                    placeholder="9265092650"
+                    name="business_contact"
+                    id="phone"
+                    className="contact-phone"
+                    required
+                    max={10}
+                    min={10}
+                  />
+                  {errors.phone && (
+                    <div style={{ color: "red" }}>{errors.phone}</div>
+                  )}
+                </div>
+              </div>
+              <div className="input_container">
+                <div className="form_index">04</div>
+                <div className="input_que">
+                  <p className="form_que">
+                    How can we help you ?{" "}
+                    {/* <span className="optional">optional</span> */}
+                  </p>
+                  <textarea
+                    name="business_message"
+                    id="aboutProject"
+                    cols="20"
+                    rows="3"
+                    placeholder="Describe it as you can"
+                    className="poppins"
+                  ></textarea>
+                </div>
+              </div>
+              <button type="submit" className="send" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send"}
+              </button>
+            </form>
           </div>
-          <form className="form poppins" onSubmit={sendEmail} ref={form}>
-            <div className="input_container">
-              <div className="form_index">01</div>
-              <div className="input_que">
-                <p className="form_que">What's your Brand name?*</p>
-                <input
-                  type="text"
-                  name="brand_name"
-                  id="name"
-                  placeholder="Milton"
-                  className="input_name"
-                  min={3}
-                  max={25}
-                  required
-                />
-                {errors.name && (
-                  <div style={{ color: "red" }}>{errors.name}</div>
-                )}
-              </div>
-            </div>
-            <div className="input_container">
-              <div className="form_index">02</div>
-              <div className="input_que">
-                <p className="form_que">What's your business email?*</p>
-                <input
-                  type="email"
-                  className="contact-email"
-                  name="business_email"
-                  placeholder="milton@gmail.com"
-                  id="email"
-                  required
-                  pattern="^[a-zA-Z0-9._%+-]{3,}@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$"
-                />
-                {errors.email && (
-                  <div style={{ color: "red" }}>{errors.email}</div>
-                )}
-              </div>
-            </div>
-            <div className="input_container">
-              <div className="form_index">03</div>
-              <div className="input_que">
-                <p className="form_que">
-                  What's your business contact number?{" "}
-                  {/* <span className="optional">optional</span> */}
-                </p>
-                <input
-                  type="tel"
-                  placeholder="9265092650"
-                  name="business_contact"
-                  id="phone"
-                  className="contact-phone"
-                  required
-                  max={10}
-                  min={10}
-                />
-                {errors.phone && (
-                  <div style={{ color: "red" }}>{errors.phone}</div>
-                )}
-              </div>
-            </div>
-            <div className="input_container">
-              <div className="form_index">04</div>
-              <div className="input_que">
-                <p className="form_que">
-                  How can we help you ?{" "}
-                  {/* <span className="optional">optional</span> */}
-                </p>
-                <textarea
-                  name="business_message"
-                  id="aboutProject"
-                  cols="20"
-                  rows="3"
-                  placeholder="Describe it as you can"
-                  className="poppins"
-                ></textarea>
-              </div>
-            </div>
-            <button type="submit" className="send" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send"}
-            </button>
-          </form>
         </div>
-      </div>
-      <Footer />
-    </Suspense>
+        <Footer />
+      </Suspense>
+    </>
   );
 }
 

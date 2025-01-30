@@ -4,7 +4,7 @@
   padding-top: 5vh;
   justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #000;
   padding-bottom: 5vh;
   padding-inline: 2.5vw;
 }
@@ -25,16 +25,12 @@
   font-weight: 500;
   font-size: 14px;
   text-decoration: none;
-  color: #fff;
+  color: #000;
 }
 .buyArt {
   font-weight: 700;
   font-size: 25px;
   line-height: 1;
-}
-.darkTheme {
-  background: #222;
-  margin-top: -10px;
 }
 .hpWrapper {
   padding-inline: 2.5vw;
@@ -66,7 +62,7 @@
   padding-block: 50px;
 }
 .moreProducts {
-  background: #fff;
+  border: 1px solid #000;
   padding: 20px 30px;
   border-radius: 100px;
   text-transform: uppercase;

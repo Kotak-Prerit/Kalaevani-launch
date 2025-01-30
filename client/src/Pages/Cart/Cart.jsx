@@ -6,30 +6,37 @@ import MetaData from "../../Meta/MetaData";
 import CartItems from "../../components/CartItems/CartItems";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
-import logoWhite from "../../assets/kalaevaniWhite.png";
+import logoWhite from "../../assets/kalaevaniWhite.webp";
 import Marquee from "react-fast-marquee";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { products } = useSelector((state) => state.products);
   const navigate = useNavigate();
 
   const increaseQauntity = (id, quantity, size) => {
     const newQty = quantity + 1;
-    if (size <= quantity) {
-      return;
+    const product = products.find((item) => item._id === id);
+    if (product) {
+      const sizeData = product.sizes.find((item) => item.name === size);
+      if (sizeData) {
+        if (quantity >= sizeData.quantity) {
+          toast.error("Maximum quantity reached for this size");
+          return;
+        }
+        dispatch(addItemsToCart(id, newQty, size));
+      }
     }
-    dispatch(addItemsToCart(id, newQty, size));
-    // window.location.reload();
   };
 
   const decreaseQauntity = (id, quantity, size) => {
     const newQty = quantity - 1;
-    if (1 >= quantity) {
+    if (quantity <= 1) {
       return;
     }
     dispatch(addItemsToCart(id, newQty, size));
-    // window.location.reload();
   };
 
   const deleteCartItems = (id, size) => {

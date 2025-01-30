@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, resetPassword } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
-import Loader from "../../components/Loader/Loader";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const ResetPassword = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <QuoteLoader />
       ) : (
         <Fragment>
           <MetaData title={"Reset Password"} />

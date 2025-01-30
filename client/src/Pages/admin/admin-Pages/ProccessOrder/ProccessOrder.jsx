@@ -8,11 +8,11 @@ import {
   updateOrder,
 } from "../../../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../../../../components/Loader/Loader";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../../../constants/orderConstants";
 import "./processOrder.css";
+import QuoteLoader from "../../../../utils/QuoteLoader/QuoteLoader";
 
 const ProcessOrder = ({ history, match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -58,7 +58,7 @@ const ProcessOrder = ({ history, match }) => {
         <SideBar />
         <div className="newProductContainer">
           {loading ? (
-            <Loader />
+            <QuoteLoader />
           ) : (
             <div
               className="confirmOrderPage"

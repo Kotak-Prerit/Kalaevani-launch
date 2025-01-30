@@ -1,6 +1,6 @@
 import React, { Fragment, lazy, Suspense } from "react";
 import "./Wholesale.css";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import MetaData from "../../Meta/MetaData";
 
 const Navbar = lazy(() => import("../../components/Navbar/Navbar"));

@@ -41,7 +41,7 @@ import Success from "./Pages/success/Success";
 import MyOrders from "./Pages/MyOrders/Myorders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProcessOrder from "./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx";
-import Loader from "./components/Loader/Loader.jsx";
+import QuoteLoader from "./utils/QuoteLoader/QuoteLoader.jsx";
 
 function App() {
   const lenis = new Lenis();
@@ -95,7 +95,7 @@ function App() {
   return (
     <Fragment>
       {isLoading ? (
-        <Loader />
+        <QuoteLoader />
       ) : (
         <Fragment>
           <HelmetProvider>

@@ -1,10 +1,13 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, Suspense, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "./About.css";
+import about01 from "../../assets/d01.webp";
+import about02 from "../../assets/d02.webp";
 import aboutVid from "../../assets/about-vid.mp4";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 import MetaData from "../../Meta/MetaData";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 
 const About = () => {
   useEffect(() => {
@@ -18,9 +21,11 @@ const About = () => {
         <div className="content">
           <div className="content-n">
             <div className="contentOne">
-              <video className="about-content" muted autoPlay loop>
-                <source src={aboutVid} type="video/mp4" />
-              </video>
+              <Suspense fallback={<QuoteLoader />}>
+                <video className="about-content" muted autoPlay loop>
+                  <source src={aboutVid} type="video/mp4" />
+                </video>
+              </Suspense>
             </div>
             <div className="contentTwo">
               <p>
@@ -42,11 +47,7 @@ const About = () => {
           <hr />
           <div className="content-n">
             <div className="contentOne">
-              <img
-                src="https://res.cloudinary.com/dqzqrsuli/image/upload/v1727642061/kalaevani01_dobqjg.jpg"
-                alt="about-image"
-                className="about-image"
-              />
+              <img src={about01} alt="about-image" className="about-image" />
             </div>
             <div className="contentTwo">
               <p>
@@ -69,11 +70,7 @@ const About = () => {
           <hr />
           <div className="content-n">
             <div className="contentOne">
-              <img
-                src="https://res.cloudinary.com/dqzqrsuli/image/upload/v1727642375/kalaevani02_wgtnia.jpg"
-                alt="about-image"
-                className="about-image"
-              />
+              <img src={about02} alt="about-image" className="about-image" />
             </div>
             <div className="contentTwo">
               <p>

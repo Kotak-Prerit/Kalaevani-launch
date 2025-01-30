@@ -1,4 +1,4 @@
-import LogoWhite from "../../assets/kalaevaniWhite.png";
+import LogoWhite from "../../assets/kalaevaniWhite.webp";
 import cartSvg from "../../assets/cart.svg";
 import accountSvg from "../../assets/account.svg";
 import shopSvg from "../../assets/shop.svg";
@@ -8,21 +8,10 @@ import { StrictMode, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { useSelector } from "react-redux";
 import { FaInstagram, FaFacebook, FaWhatsapp, FaYoutube } from "react-icons/fa";
-import sizeChart from "../../assets/sizechart.png";
 
 const Navbar = (props) => {
   const [clicked, setClicked] = useState(false);
   const { cartItems } = useSelector((state) => state.cart);
-
-  const [sizeChartIsOpen, setSizeChartIsOpen] = useState(false);
-
-  const openSizeChart = () => {
-    setSizeChartIsOpen(true);
-  };
-
-  const closeSizeChart = () => {
-    setSizeChartIsOpen(false);
-  };
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -154,12 +143,12 @@ const Navbar = (props) => {
               >
                 <p className="links">Account</p>
               </Link>
-              <button
+              <Link
                 className={clicked ? "menuLinksActive sizeBtn" : "vanish"}
-                onClick={openSizeChart}
+                to="/collab"
               >
-                <p className="links">SIZE CHART</p>
-              </button>
+                <p className="links">Collaborate</p>
+              </Link>
               <Link
                 to="/privacy"
                 className={clicked ? "menuLinksActive" : "vanish"}
@@ -167,14 +156,6 @@ const Navbar = (props) => {
                 <p className="links">Privacy Policy</p>
               </Link>
             </div>
-            {sizeChartIsOpen && (
-              <div className="sizeChartPopup">
-                <div className="popupOverlay" onClick={closeSizeChart}></div>
-                <div className="popupContent">
-                  <img src={sizeChart} alt="Size Chart" />
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

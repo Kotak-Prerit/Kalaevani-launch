@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import { logout } from "../../actions/userAction";
 import { useDispatch } from "react-redux";
 import UserAccount from "../../components/UserAccount/UserAccount";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 
 const Account = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);

@@ -4,7 +4,7 @@ import "./MaterialPopup.css";
 import { getProductDetails } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import gsm from "../../assets/GSM.png";
+import gsm from "../../assets/GSM.webp";
 
 const MaterialPopup = ({ isOpen, onClose, materialName }) => {
   const dispatch = useDispatch();

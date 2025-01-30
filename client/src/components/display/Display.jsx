@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import styles from "./display.module.scss";
-import Picture1 from "../../assets/d01.jpg";
-import Picture2 from "../../assets/d02.jpg";
-import Picture3 from "../../assets/d03.jpg";
-import Picture4 from "../../assets/d04.jpg";
-import Picture5 from "../../assets/d05.jpg";
-import Picture6 from "../../assets/d06.jpg";
-import Picture7 from "../../assets/d07.jpg";
+import Picture1 from "../../assets/d01.webp";
+import Picture2 from "../../assets/d02.webp";
+import Picture3 from "../../assets/d03.webp";
+import Picture4 from "../../assets/d04.webp";
+import Picture5 from "../../assets/d05.webp";
+import Picture6 from "../../assets/d06.webp";
+import Picture7 from "../../assets/d07.webp";
 import { useScroll, useTransform, motion } from "framer-motion";
 
 function Display() {
@@ -60,7 +60,18 @@ function Display() {
           return (
             <motion.div key={index} style={{ scale }} className={styles.el}>
               <div className={styles.imageContainer}>
-                <img src={src} alt="display-image" placeholder="blur" />
+                <picture>
+                  <source
+                    srcSet={src.replace(".jpg", ".webp")}
+                    type="image/webp"
+                  />
+                  <img
+                    src={src}
+                    alt="display-image"
+                    loading="eager"
+                    fetchpriority="high"
+                  />
+                </picture>
               </div>
             </motion.div>
           );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import logo from "../../../../assets/kalaevaniWhite.png";
+import logo from "../../../../assets/kalaevaniWhite.webp";
 import { Link } from "react-router-dom";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaStore, FaPencil } from "react-icons/fa6";

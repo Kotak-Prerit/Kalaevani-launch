@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import MetaData from "../../Meta/MetaData";
 import Navbar from "../../components/Navbar/Navbar";
 import { MdOutlineFileDownload } from "react-icons/md";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 
 const MyOrders = () => {
   const dispatch = useDispatch();

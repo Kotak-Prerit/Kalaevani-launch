@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();

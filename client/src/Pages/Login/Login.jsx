@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
-import Loader from "../../components/Loader/Loader";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import logo from "../../assets/kalaevaniBlack.png";
+import logo from "../../assets/kalaevaniBlack.webp";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ const Login = () => {
   return (
     <Fragment>
       {loading ? (
-        <Loader />
+        <QuoteLoader />
       ) : (
         <>
           <MetaData title="SignIn - SignUp | Kalaevani" />

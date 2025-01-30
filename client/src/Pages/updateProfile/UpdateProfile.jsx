@@ -7,8 +7,8 @@ import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
-import Loader from "../../components/Loader/Loader";
-import logo from "../../assets/kalaevaniBlack.png";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
+import logo from "../../assets/kalaevaniBlack.webp";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -55,7 +55,7 @@ const Profile = () => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <QuoteLoader />
       ) : (
         <Fragment>
           <MetaData title={"Update Profile"} />

@@ -1,53 +1,52 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, Suspense, useRef } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
-// import cartOutline from "../../assets/cartOutline.svg";
-// import cartFill from "../../assets/cartFill.svg";
 import "./ProductCard.css";
+import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 // import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
   const options = {
     edit: false,
-    color1: "#fff",
-    color2: "yellow",
+    color1: "#ccc",
+    color2: "#000",
     value: product.ratings,
     half: true,
     size: 16,
   };
 
   const wrapper = useRef();
-  const [pressed, setPressed] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const pressed = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
   // const [isFilled, setIsFilled] = useState(false);
 
   const handleMouseDown = (e) => {
-    setPressed(true);
-    setStartX(e.clientX);
+    pressed.current = true;
+    startX.current = e.clientX;
     if (wrapper.current) {
-      setScrollLeft(wrapper.current.scrollLeft);
+      scrollLeft.current = wrapper.current.scrollLeft;
+      wrapper.current.style.cursor = "grabbing";
     }
-    wrapper.current.style.cursor = "grabbing";
   };
 
   const handleMouseUp = () => {
-    setPressed(false);
+    pressed.current = false;
     if (wrapper.current) {
       wrapper.current.style.cursor = "grab";
     }
   };
 
   const handleMouseMove = (e) => {
-    if (!pressed) return;
-    const x = e.clientX - startX;
+    if (!pressed.current) return;
+    const x = e.clientX - startX.current;
     if (wrapper.current) {
-      wrapper.current.scrollLeft = scrollLeft - x;
+      wrapper.current.scrollLeft = scrollLeft.current - x;
     }
   };
 
   const handleMouseLeave = () => {
-    setPressed(false);
+    pressed.current = false;
   };
 
   // const toggleCart = () => {
@@ -75,25 +74,29 @@ const Product = ({ product }) => {
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
               >
-                <img
-                  src={image.url}
-                  alt={`${product.name}`}
-                  className="pcImg poppins"
-                  style={{
-                    color: "#fff",
-                    textTransform: "lowercase",
-                    fontWeight: 300,
-                  }}
-                />
+                <Suspense fallback={<QuoteLoader />}>
+                  <img
+                    src={image.url}
+                    alt={`${product.name}`}
+                    className="pcImg poppins"
+                    style={{
+                      color: "#fff",
+                      textTransform: "lowercase",
+                      fontWeight: 300,
+                    }}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    fetchpriority={i === 0 ? "high" : "auto"}
+                  />
+                </Suspense>
               </div>
             ))}
           </div>
           <div className="name-mrp">
             <div className="product-Name">
-              <p className="productName futuraLt white">{product.name}</p>
+              <p className="productName futuraLt">{product.name}</p>
             </div>
             <div className="price-wrapper">
-              <p className="productPrice futuraLt white">₹{product.price}</p>
+              <p className="productPrice futuraLt">₹{product.price}</p>
             </div>
           </div>
           <div className="ratings">

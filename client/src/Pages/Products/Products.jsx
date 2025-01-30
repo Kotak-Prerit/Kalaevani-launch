@@ -10,7 +10,7 @@ import Pagination from "react-js-pagination";
 import { toast } from "react-toastify";
 import "./Products.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import logoWhite from "../../assets/kalaevaniWhite.png";
+import logoBlack from "../../assets/kalaevaniBlack.webp";
 import { Slider } from "@mui/material";
 import { LuSearch } from "react-icons/lu";
 
@@ -100,7 +100,7 @@ function Products() {
         <div className="allProductWrapper">
           <Navbar />
           <Link to={"/"} className="productLogo">
-            <img src={logoWhite} alt="logo" />
+            <img src={logoBlack} alt="logo" />
           </Link>
           <div className="filterBox-container flex-center">
             <div className="filterBox">
