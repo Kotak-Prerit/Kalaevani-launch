@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
 import "./IntroVid.css";
+import introvid from "../../assets/productVid.mp4";
 
 const IntroVid = () => {
   const videoRef = useRef(null);
@@ -22,10 +23,7 @@ const IntroVid = () => {
     <div className="Vidcontainer">
       <div className="productVidWrapper">
         <video ref={videoRef} className="productVid" loop preload="auto" muted>
-          <source
-            src="https://ik.imagekit.io/okvmlnlrf8/assets/productVid.mp4?updatedAt=1737631606304"
-            type="video/mp4"
-          />
+          <source src={introvid} type="video/mp4" />
         </video>
 
         {/* Big Play Button (Initially Visible) */}

@@ -172,6 +172,11 @@ const ProductDetails = () => {
   const productImage = product.images[5] ? product.images[5].url : null;
 
   const scrollToProductDetail = () => {
+    if (!size) {
+      toast.error("Please select a size first");
+      return;
+    }
+    dispatch(addItemsToCart(id, quantity, size));
     navigate("/login?redirect=shipping");
   };
 
@@ -285,6 +290,7 @@ const ProductDetails = () => {
                     <button
                       className="detailsButton black poppins"
                       onClick={scrollToProductDetail}
+                      disabled={product.Stock < 1 ? true : false}
                     >
                       Buy Now
                     </button>

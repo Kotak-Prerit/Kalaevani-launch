@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useRef } from "react";
+import React, { Fragment, Suspense, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
 import "./ProductCard.css";
@@ -19,7 +19,9 @@ const Product = ({ product }) => {
   const pressed = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
-  // const [isFilled, setIsFilled] = useState(false);
+  const [loadingImages, setLoadingImages] = useState(
+    new Array(product.images.length).fill(true)
+  );
 
   const handleMouseDown = (e) => {
     pressed.current = true;
@@ -49,6 +51,14 @@ const Product = ({ product }) => {
     pressed.current = false;
   };
 
+  const handleImageLoad = (index) => {
+    setLoadingImages((prev) => {
+      const newState = [...prev];
+      newState[index] = false;
+      return newState;
+    });
+  };
+
   // const toggleCart = () => {
   //   setIsFilled((prevState) => {
   //     if (prevState) {
@@ -75,15 +85,14 @@ const Product = ({ product }) => {
                 onMouseLeave={handleMouseLeave}
               >
                 <Suspense fallback={<QuoteLoader />}>
+                  {loadingImages[i] && <div className="skeleton-loader"></div>}
                   <img
                     src={image.url}
                     alt={`${product.name}`}
-                    className="pcImg poppins"
-                    style={{
-                      color: "#fff",
-                      textTransform: "lowercase",
-                      fontWeight: 300,
-                    }}
+                    className={`pcImg poppins ${
+                      loadingImages[i] ? "hidden" : ""
+                    }`}
+                    onLoad={() => handleImageLoad(i)}
                     loading={i === 0 ? "eager" : "lazy"}
                     fetchpriority={i === 0 ? "high" : "auto"}
                   />
