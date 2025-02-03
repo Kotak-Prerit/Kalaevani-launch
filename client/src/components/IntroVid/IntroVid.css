@@ -14,48 +14,18 @@
 }
 
 .productVid {
+  position: relative;
   width: 100%;
-  height: auto;
+  padding-top: 56.25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/* Big Play Button (Center) */
-.playButton {
+.productVid iframe {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #000;
-  color: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: none;
-  font-size: 30px;
-  height: 80px;
-  border-radius: 100%;
-  width: 80px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.playButton svg,
-.pauseButton svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.playButton:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-/* Pause Button (Bottom Left) */
-.pauseButton {
-  position: absolute;
-  bottom: 20px;
-  left: 15px;
-  background: #000;
-  color: white;
-  border: none;
-  font-size: 25px;
-  height: 50px;
-  width: 50px;
-  border-radius: 100%;
-  cursor: pointer;
-  transition: 0.3s;
 }

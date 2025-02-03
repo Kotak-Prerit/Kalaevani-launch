@@ -156,28 +156,34 @@ export const forgotPassword = (email) => async (dispatch) => {
     const { data } = await axios.post(`/api/v1/password/forgot`, email, config);
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
+
+    return Promise.resolve(data.message);
   } catch (error) {
     dispatch({
       type: FORGOT_PASSWORD_FAIL,
       payload: error.response.data.error,
     });
+
+    return Promise.reject(
+      error.response?.data?.message || "Something went wrong"
+    );
   }
 };
 
 // Reset Password
-export const resetPassword = (token, passwords) => async (dispatch) => {
+export const resetPassword = (email, otp, newPassword) => async (dispatch) => {
   try {
     dispatch({ type: RESET_PASSWORD_REQUEST });
 
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `/api/v1/password/reset/${token}`,
-      passwords,
+      `/api/v1/password/reset`,
+      { email, otp, newPassword },
       config
     );
 
-    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.success });
+    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {
     dispatch({
       type: RESET_PASSWORD_FAIL,

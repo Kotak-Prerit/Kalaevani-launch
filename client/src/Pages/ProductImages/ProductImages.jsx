@@ -46,22 +46,22 @@ const ProductImages = () => {
     });
   };
 
-  useEffect(() => {
-    const preventDoubleTapZoom = (event) => {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    };
+  // useEffect(() => {
+  //   const preventDoubleTapZoom = (event) => {
+  //     if (event.touches.length > 1) {
+  //       event.preventDefault();
+  //     }
+  //   };
 
-    const container = document.querySelector(".productImagesWrapper");
-    container.addEventListener("touchstart", preventDoubleTapZoom, {
-      passive: false,
-    });
+  //   const container = document.querySelector(".productImagesWrapper");
+  //   container.addEventListener("touchstart", preventDoubleTapZoom, {
+  //     passive: false,
+  //   });
 
-    return () => {
-      container.removeEventListener("touchstart", preventDoubleTapZoom);
-    };
-  }, []);
+  //   return () => {
+  //     container.removeEventListener("touchstart", preventDoubleTapZoom);
+  //   };
+  // }, []);
 
   return (
     <div className="productImagesWrapper">

@@ -6,7 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ToastContainer } from "react-toastify";
 import { loadUser } from "./actions/userAction";
 import "react-toastify/dist/ReactToastify.css";
-import store from "./store/store";
+import { useDispatch } from "react-redux";
 import Home from "./Pages/Home/Home";
 import Products from "./Pages/Products/Products";
 import Login from "./Pages/Login/Login";
@@ -42,8 +42,11 @@ import MyOrders from "./Pages/MyOrders/Myorders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProcessOrder from "./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx";
 import QuoteLoader from "./utils/QuoteLoader/QuoteLoader.jsx";
+// import axios from "axios";
 
 function App() {
+  const dispatch = useDispatch();
+
   const lenis = new Lenis();
   lenis.on("scroll", (e) => {});
   function raf(time) {
@@ -54,12 +57,19 @@ function App() {
   requestAnimationFrame(raf);
 
   const [isLoading, setIsLoading] = useState(true);
+  // const [razorpayApiKey, setRazorpayApiKey] = useState("");
+
+  // async function getRazorpayApiKey() {
+  //   const { data } = await axios.get("api/v1/razorpayapikey");
+
+  //   setRazorpayApiKey(data.razorpayApiKey);
+  // }
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-
+    // getRazorpayApiKey();
     window.scrollTo({ top: 0, behavior: "smooth" });
     return () => clearTimeout(timer);
   }, []);
@@ -89,8 +99,8 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    store.dispatch(loadUser());
-  });
+    dispatch(loadUser());
+  }, [dispatch]);
 
   return (
     <Fragment>
