@@ -44,7 +44,7 @@ export default function Footer() {
               <Link className="anchor" to="/about">
                 About Us
               </Link>
-              <Link className="anchor" to="/account">
+              <Link className="anchor" to="/login">
                 Account
               </Link>
               <Link className="anchor" to="/cart">

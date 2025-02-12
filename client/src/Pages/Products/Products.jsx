@@ -16,7 +16,7 @@ import { LuSearch } from "react-icons/lu";
 
 function Products() {
   const dispatch = useDispatch();
-  const { error, productCount, products, perPage } = useSelector(
+  const { error, productCount, products, perPage, loading } = useSelector(
     (state) => state.products
   );
   const [currentPage, setCurrentPage] = useState(1);
@@ -135,16 +135,26 @@ function Products() {
               <input type="submit" value=" o " />
             </div>
           </form>
-          <div
-            className="products_container"
-            onMouseEnter={textEnter}
-            onMouseLeave={textLeave}
-          >
-            {products &&
-              products.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-          </div>
+          {loading ? (
+            <div className="products-loading">
+              <div className="products-loader"></div>
+            </div>
+          ) : (
+            <div
+              className="products_container"
+              onMouseEnter={textEnter}
+              onMouseLeave={textLeave}
+            >
+              {products &&
+                products.map((product) => (
+                  <Product
+                    key={product._id}
+                    product={product}
+                    loading={loading}
+                  />
+                ))}
+            </div>
+          )}
         </div>
 
         {perPage < productCount && (

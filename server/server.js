@@ -13,7 +13,7 @@ process.on("uncaughtException", (err) => {
 dotenv.config({ path: "server/config/config.env" });
 connectDB();
 
-global.instance = new Razorpay({
+const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_SECRET,
 });
@@ -36,3 +36,5 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+module.exports = razorpay;

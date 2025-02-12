@@ -69,9 +69,7 @@ userSchema.methods.resetPassword = async function (newPassword) {
 
 //compare Password
 userSchema.methods.comparePassword = async function (enteredPassword) {
-  console.log(enteredPassword, this.password);
   const isMatched = await bcrypt.compare(enteredPassword, this.password);
-  console.log(">>>>", isMatched);
   return isMatched;
 };
 

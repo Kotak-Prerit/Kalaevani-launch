@@ -26,6 +26,7 @@ const CartItems = ({ increaseQty, decreaseQty, deleteCartItems, item }) => {
         </div>
         <div className="counter align-center">
           <button
+            type="button"
             className="minus white"
             onClick={() => decreaseQty(item.product, item.quantity, item.size)}
           >
@@ -38,6 +39,7 @@ const CartItems = ({ increaseQty, decreaseQty, deleteCartItems, item }) => {
             className="quantity white poppins"
           />
           <button
+            type="button"
             className="plus white"
             onClick={() => increaseQty(item.product, item.quantity, item.size)}
           >

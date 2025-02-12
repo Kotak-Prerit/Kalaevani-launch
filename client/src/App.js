@@ -42,7 +42,6 @@ import MyOrders from "./Pages/MyOrders/Myorders";
 import OrderDetails from "./Pages/OrderDetails/OrderDetails";
 import ProcessOrder from "./Pages/admin/admin-Pages/ProccessOrder/ProccessOrder.jsx";
 import QuoteLoader from "./utils/QuoteLoader/QuoteLoader.jsx";
-// import axios from "axios";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,19 +56,11 @@ function App() {
   requestAnimationFrame(raf);
 
   const [isLoading, setIsLoading] = useState(true);
-  // const [razorpayApiKey, setRazorpayApiKey] = useState("");
-
-  // async function getRazorpayApiKey() {
-  //   const { data } = await axios.get("api/v1/razorpayapikey");
-
-  //   setRazorpayApiKey(data.razorpayApiKey);
-  // }
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-    // getRazorpayApiKey();
     window.scrollTo({ top: 0, behavior: "smooth" });
     return () => clearTimeout(timer);
   }, []);

@@ -16,7 +16,6 @@ const Navbar = (props) => {
   const handleClick = () => {
     setClicked(!clicked);
   };
-
   return (
     <StrictMode>
       <div className={clicked ? "menuOpen" : "menuClose"}>
@@ -95,6 +94,7 @@ const Navbar = (props) => {
                 </Link>
                 <Link
                   to={"https://www.facebook.com/profile.php?id=61562478641808"}
+                  target="_blank"
                   className={clicked ? "menuSocialActive" : "vanish"}
                 >
                   <FaFacebook />
@@ -109,6 +109,7 @@ const Navbar = (props) => {
 
                 <Link
                   to={"https://www.youtube.com/@Kalaevani"}
+                  target="_blank"
                   className={clicked ? "menuSocialActive" : "vanish"}
                 >
                   <FaYoutube />

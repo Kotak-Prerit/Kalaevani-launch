@@ -17,10 +17,11 @@ import store from "../../../../store/store.js";
 import { loadUser } from "../../../../actions/userAction.js";
 import { getAllOrders } from "../../../../actions/orderAction.js";
 import PageNotFound from "../../../404/PageNotFound.jsx";
+import MetaData from "../../../../Meta/MetaData.js";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.adminProduct.products);
+  const { products } = useSelector((state) => state.adminProduct);
   const { orders } = useSelector((state) => state.allOrders);
   const { users } = useSelector((state) => state.allUsers);
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -33,6 +34,7 @@ const Dashboard = () => {
   }, [dispatch]);
   return (
     <>
+      <MetaData title={"Kalaevani - Dashboard"} />
       {isAuthenticated && user.role === "admin" ? (
         <div className="dashboard">
           <Sidebar />

@@ -1,8 +1,7 @@
-import React, { Fragment, Suspense, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-stars";
 import "./ProductCard.css";
-import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader";
 // import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
@@ -20,7 +19,7 @@ const Product = ({ product }) => {
   const startX = useRef(0);
   const scrollLeft = useRef(0);
   const [loadingImages, setLoadingImages] = useState(
-    new Array(product.images.length).fill(true)
+    product.images.map(() => true)
   );
 
   const handleMouseDown = (e) => {
@@ -52,6 +51,7 @@ const Product = ({ product }) => {
   };
 
   const handleImageLoad = (index) => {
+    console.log(`Image ${index} loaded`);
     setLoadingImages((prev) => {
       const newState = [...prev];
       newState[index] = false;
@@ -74,29 +74,29 @@ const Product = ({ product }) => {
     <Fragment>
       <div className="productCard">
         <Link to={`/product/${product._id}`} className="linkRemove">
-          <div className="pc-carousel" ref={wrapper}>
+          <div
+            className="pc-carousel"
+            ref={wrapper}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            onTouchEnd={handleMouseUp}
+          >
             {product.images.map((image, i) => (
-              <div
-                key={i}
-                className="pc-innerCarousel"
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Suspense fallback={<QuoteLoader />}>
-                  {loadingImages[i] && <div className="skeleton-loader"></div>}
-                  <img
-                    src={image.url}
-                    alt={`${product.name}`}
-                    className={`pcImg poppins ${
-                      loadingImages[i] ? "hidden" : ""
-                    }`}
-                    onLoad={() => handleImageLoad(i)}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    fetchpriority={i === 0 ? "high" : "auto"}
-                  />
-                </Suspense>
+              <div key={i} className="pc-innerCarousel">
+                {loadingImages[i] && (
+                  <div className="skeleton-loader padauk">loading...</div>
+                )}
+                <img
+                  src={image.url}
+                  alt={`${product.name}`}
+                  className={`pcImg poppins ${
+                    loadingImages[i] ? "hidden" : ""
+                  }`}
+                  onLoad={() => handleImageLoad(i)}
+                  fetchpriority={i === 0 ? "high" : "auto"}
+                />
               </div>
             ))}
           </div>

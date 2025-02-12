@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-// import { useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
 import MetaData from "../../Meta/MetaData";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,19 +10,19 @@ import {
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar/Navbar";
 import logo from "../../assets/kalaevaniBlack.webp";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { loading, error, message } = useSelector(
-    (state) => state.forgotPassword
-  );
+  const { error, message } = useSelector((state) => state.forgotPassword);
 
   const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [isEmailSent, setIsEmailSent] = useState("");
-  const [otp, setOtp] = useState(0);
-  const [isOtpSubmitted, setIsOtpSubmitted] = useState(false);
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const inputRefs = React.useRef([]);
 
@@ -51,52 +50,49 @@ const ForgotPassword = () => {
 
   const forgotPasswordSubmit = async (e) => {
     e.preventDefault();
-
+    setIsEmailSent(false); // Reset email sent state
     const myForm = new FormData();
     myForm.set("email", email);
-
     try {
       await dispatch(forgotPassword(myForm));
       setIsEmailSent(true);
-      toast.success("OTP has been sent to your email.");
+      toast.success("OTP sent to your email!");
     } catch (error) {
       toast.error("Error sending email: " + error);
     }
   };
 
-  const onSubmitOTP = async (e) => {
+  const resetPasswordSubmit = async (e) => {
     e.preventDefault();
 
-    const otpArray = inputRefs.current.map((e) => e.value);
-    const otpValue = otpArray.join("");
+    // Collect OTP from input fields
+    const otpArray = inputRefs.current.map((input) => input.value);
+    const otp = otpArray.join("");
 
-    if (otpValue.length !== 6) {
+    if (otp.length !== 6) {
       toast.error("Please enter a valid 6-digit OTP.");
       return;
     }
-
-    setOtp(otpValue);
-    setIsOtpSubmitted(true);
-    toast.success("OTP verified successfully.");
-  };
-
-  const resetPasswordSubmit = async (e) => {
-    e.preventDefault();
 
     if (newPassword.length < 6) {
       toast.error("Password must be at least 6 characters long.");
       return;
     }
 
+    setIsUpdatingPassword(true);
+
     try {
-      await dispatch(resetPassword(email, otp, newPassword));
-      toast.success("Password reset successfully.");
-      setIsOtpSubmitted(false);
-      setIsEmailSent(false);
-      setEmail("");
-      setNewPassword("");
+      const response = await dispatch(resetPassword(email, otp, newPassword));
+      if (response?.success) {
+        toast.success("Password reset successfully!");
+        navigate("/login");
+      } else {
+        toast.error(response.message || "Failed to reset password");
+      }
     } catch (error) {
-      toast.error("Error resetting password: " + error);
+      toast.error("Error resetting password: " + error.message);
+    } finally {
+      setIsUpdatingPassword(false);
     }
   };
 
@@ -105,7 +101,6 @@ const ForgotPassword = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
-
     if (message) {
       toast.success(message);
     }
@@ -118,7 +113,7 @@ const ForgotPassword = () => {
         <Navbar props={logo} />
         <div className="forgotPasswordContainer">
           <div className="forgotPasswordBox">
-            {!isEmailSent && (
+            {!isEmailSent ? (
               <form
                 className="forgotPasswordForm"
                 onSubmit={forgotPasswordSubmit}
@@ -126,7 +121,7 @@ const ForgotPassword = () => {
                 <h2 className="futuraLt updateHead">Forgot Password</h2>
                 <p className="notice poppins">
                   An email will be sent to your registered email address to
-                  reset the password!{" "}
+                  reset the password!
                 </p>
                 <div className="forgotPasswordEmail">
                   <div className="email">
@@ -141,21 +136,20 @@ const ForgotPassword = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-
                 <input
                   type="submit"
-                  value="Send"
+                  value="Send OTP"
                   className="forgotPasswordBtn"
                 />
               </form>
-            )}
-
-            {/* Verify OTP */}
-            {!isOtpSubmitted && isEmailSent && (
-              <form onSubmit={onSubmitOTP}>
-                <h2 className="futuraLt updateHead">Reset password OTP</h2>
+            ) : (
+              <form
+                className="forgotPasswordForm"
+                onSubmit={resetPasswordSubmit}
+              >
+                <h2 className="futuraLt updateHead">Reset Password</h2>
                 <p className="notice poppins">
-                  Enter the 6-digit OTP sent to your email
+                  Enter the OTP sent to your email and a new password
                 </p>
                 <div onPaste={handlePaste} className="otpBlocks">
                   {Array(6)
@@ -166,42 +160,40 @@ const ForgotPassword = () => {
                         maxLength={1}
                         key={index}
                         required
-                        ref={(e) => (inputRefs.current[index] = e)}
+                        ref={(el) => (inputRefs.current[index] = el)}
                         onInput={(e) => handleInput(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
                       />
                     ))}
                 </div>
-                <button className="forgotPasswordBtn">Submit</button>
-              </form>
-            )}
-
-            {/* Reset new password */}
-            {isOtpSubmitted && isEmailSent && (
-              <form
-                className="forgotPasswordForm"
-                onSubmit={resetPasswordSubmit}
-              >
-                <h2 className="futuraLt updateHead">New Password</h2>
-                <p className="notice poppins">Enter the new password Below</p>
+                <div className="hr"></div>
                 <div className="forgotPasswordEmail">
                   <div className="email">
-                    <p className="emailText">Password</p>
+                    <p className="emailText">New Password</p>
                   </div>
-                  <input
-                    type="password"
-                    placeholder="Enter your new passowrd"
-                    required
-                    name="password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                  />
+                  <div className="relativeContainer">
+                    <input
+                      type={visible ? "text" : "password"}
+                      placeholder="Enter your new password"
+                      required
+                      name="password"
+                      className="newpassword_input"
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                    <div
+                      className="poppins eyeIconText"
+                      onClick={() => setVisible(!visible)}
+                    >
+                      {visible ? "Hide" : "Show"}
+                    </div>
+                  </div>
                 </div>
-
                 <input
                   type="submit"
-                  value="Submit"
+                  value={isUpdatingPassword ? "Resetting..." : "Reset Password"}
                   className="forgotPasswordBtn"
+                  disabled={isUpdatingPassword}
                 />
               </form>
             )}

@@ -1,9 +1,13 @@
+:root {
+  --gray-dim: #cbcbcb;
+  --gray-high: #9f9f9f;
+}
+
 .productHero {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding-inline: 2.5vw;
-  /* padding-top: 12rem; */
 }
 
 .productLogo {
@@ -173,6 +177,41 @@
 }
 .filterBox-container {
   width: 100%;
+}
+.products-loading {
+  height: 70vh;
+  width: 100%;
+  padding: 4vh;
+  border-radius: 10px;
+}
+.products-loader {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background-image: linear-gradient(
+    110deg,
+    var(--gray-dim) 73%,
+    var(--gray-high) 75%,
+    var(--gray-dim) 77%,
+    var(--gray-dim) 78%,
+    var(--gray-high) 84%,
+    var(--gray-high) 88%,
+    var(--gray-dim) 94%,
+    var(--gray-dim) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 0 center;
+  border-radius: inherit;
+  animation: 2s ease-in-out loading infinite;
+}
+@keyframes loading {
+  0% {
+    background-position-x: 0;
+  }
+  40%,
+  100% {
+    background-position-x: -200%;
+  }
 }
 @media screen and (max-width: 850px) {
   .productHero {

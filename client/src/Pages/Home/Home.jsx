@@ -17,7 +17,7 @@ import logo from "../../assets/kalaevaniBlack.webp";
 import Navbar from "../../components/Navbar/Navbar";
 import Product from "../../components/ProductCard/ProductCard.jsx";
 import Footer from "../../components/Footer/Footer";
-import Marque from "../../components/Marque-top/Marque.jsx";
+// import Marque from "../../components/Marque-top/Marque.jsx";
 import Hero from "../../components/Hero/Hero";
 import IntroVid from "../../components/IntroVid/IntroVid";
 import QuoteLoader from "../../utils/QuoteLoader/QuoteLoader.jsx";
@@ -94,7 +94,7 @@ const Home = () => {
     <Fragment>
       <>
         <MetaData title="Kalaevani" />
-        <Marque />
+        {/* <Marque /> */}
         <Navbar props={logo} />
         {/* <motion.div className="draggable-el" drag>
             <img
