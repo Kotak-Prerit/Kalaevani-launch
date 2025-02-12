@@ -329,6 +329,9 @@ select:focus {
   color: #000;
   border-radius: 0 100px 100px 0;
 }
+.bn button {
+  cursor: pointer;
+}
 .link {
   text-align: center;
   font-size: 22px;

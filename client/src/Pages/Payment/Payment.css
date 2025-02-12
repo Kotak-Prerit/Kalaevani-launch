@@ -8,14 +8,14 @@
 
 .app-container {
   width: 90%;
-  background-image: linear-gradient(#222831, #31363f);
+  background-image: linear-gradient(#004704, #006605);
   margin-top: 20px;
   border-radius: 10px;
   overflow: hidden;
 }
 .top-box {
   height: 150px;
-  background-color: #76abae;
+  background-color: #7be382;
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 80px;
   text-align: center;
@@ -39,10 +39,11 @@
 }
 .bottom-box {
   width: calc(100% - 60px);
-  height: 30px;
-  background-color: #526d82;
+  padding: 15px 10px;
+  background-color: #26cc00;
   margin-left: 30px;
   border-radius: 10px;
+  gap: 30px;
 }
 .payment-option-btn {
   position: relative;
@@ -62,23 +63,19 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: black;
+  background-color: #ff0000;
   transition: all 0.3s ease;
 }
-
 .payment-radio:checked + .payment-option-btn::before {
-  background-color: black;
-  border: 2px solid white;
+  background-color: #00ff00;
 }
-
 .right-icon {
   float: right;
   margin-right: 30px;
 }
 
 .middle-box {
-  height: 150px;
-  background-image: linear-gradient(#27374d, #526d82);
+  background-image: linear-gradient(#009c1a, #26cc00);
   margin: -70px 30px 20px;
   text-align: center;
   font-size: 12px;
@@ -112,7 +109,7 @@
   width: calc(100% - 60px) !important;
   margin-left: 30px;
   margin-block: 20px;
-  background: linear-gradient(#526d82, #27374d);
+  background: linear-gradient(#26cc00, #009c1a);
   padding: 20px;
   border-radius: 10px;
   overflow: hidden;
@@ -134,13 +131,55 @@
   font-size: 20px;
   font-weight: bold;
 }
+.GT-check div p {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 .paymentBtn {
-  background: #526d82;
+  background: #198900;
   color: #fff;
   width: calc(100% - 60px);
   margin-left: 30px;
   margin-bottom: 20px;
   padding-block: 10px;
   border-radius: 10px;
+  font-size: 16px;
   border: none;
+  cursor: pointer;
+}
+.paymentBtn:hover {
+  background: #004704;
+  transition: all 0.3s ease;
+}
+.payment_method {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.payment_method label {
+  color: #000;
+}
+@media screen and (max-width: 500px) {
+  .card-details h3 {
+    font-size: 16px;
+  }
+  .card-details p {
+    font-size: 14px;
+  }
+  .GT-check div p,
+  .GT-check div span {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .payment_method label {
+    font-size: 14px;
+  }
+  .payment-option-btn {
+    padding-left: 20px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .payment_method label {
+    font-size: 9px;
+  }
 }

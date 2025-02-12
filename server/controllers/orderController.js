@@ -12,7 +12,15 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     itemsPrice,
     shippingPrice,
     totalPrice,
+    paymentMethod,
+    paymentStatus,
+    amountPaid,
   } = req.body;
+
+  // Validating payment status for online orders
+  if (paymentMethod === "Online" && paymentStatus !== "Paid") {
+    return next(new ErrorHander("Payment not completed", 400));
+  }
 
   const order = await Order.create({
     shippingInfo,
@@ -21,7 +29,10 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     itemsPrice,
     shippingPrice,
     totalPrice,
-    paidAt: Date.now(),
+    paymentMethod,
+    paymentStatus,
+    amountPaid,
+    paidAt: paymentMethod === "Online" ? Date.now() : undefined,
     user: req.user._id,
   });
 
@@ -109,13 +120,11 @@ async function updateStock(order) {
   const product = await Product.findById(order.product);
 
   const updatedSizes = [...product.sizes].map((item) => {
-    console.log(item.name, order.size, item.name === order.size);
     if (item.name === order.size) {
       item.quantity -= order.quantity;
     }
     return item;
   });
-  console.log(">>>", updatedSizes);
   await Product.findByIdAndUpdate(
     order.product,
     {

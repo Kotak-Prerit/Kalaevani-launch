@@ -1,6 +1,7 @@
 .myOrdersPage {
   width: 100vw;
   max-width: 100%;
+  min-height: 50vh;
   padding: 0 2.5%;
   box-sizing: border-box;
   height: fit-content;
@@ -8,7 +9,14 @@
   flex-direction: column;
   margin-top: 20px;
 }
-
+.no-orders-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2rem;
+  color: #888;
+}
 #myOrdersHeading {
   text-align: center;
   font: 400 1.2vmax "Poppins";

@@ -51,24 +51,20 @@ const userSchema = new mongoose.Schema({
   resetpasswordExpire: Date,
 });
 
-// HASHING
-userSchema.pre("save", async function (next) {
-  try {
-    if (!this.isModified("password")) {
-      next();
-    }
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-  } catch (err) {
-    next(err);
-  }
-});
-
 // JWT TOKEN
 userSchema.methods.getJWTToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_KEY, {
     expiresIn: "7d",
   });
+};
+
+//reset Password
+userSchema.methods.resetPassword = async function (newPassword) {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
+  this.password = hashedPassword;
+  this.resetOtp = "";
+  this.resetOtpExpireAt = 0;
 };
 
 //compare Password

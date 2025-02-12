@@ -9,11 +9,13 @@ import MetaData from "../../Meta/MetaData";
 import Navbar from "../../components/Navbar/Navbar";
 import { MdOutlineFileDownload } from "react-icons/md";
 import logo from "../../assets/kalaevaniBlack.webp";
+import Footer from "../../components/Footer/Footer";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
 
   const { error, orders } = useSelector((state) => state.myOrders);
+  const { user } = useSelector((state) => state.user);
 
   const columns = [
     {
@@ -92,7 +94,7 @@ const MyOrders = () => {
 
   return (
     <Fragment>
-      <MetaData title={` - Orders`} />
+      <MetaData title={`Orders of ${user.name} `} />
       <div className="myOrdersContainer">
         <Navbar props={logo} />
         <div className="myOrdersPage">
@@ -104,9 +106,13 @@ const MyOrders = () => {
               pageSize={10}
               disableSelectionOnClick
               className="myOrdersTable poppins"
+              localeText={{
+                noRowsLabel: "No Orders Yet",
+              }}
             />
           </div>
         </div>
+        <Footer />
       </div>
     </Fragment>
   );

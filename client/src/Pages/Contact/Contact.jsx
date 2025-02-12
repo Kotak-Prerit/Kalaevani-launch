@@ -21,16 +21,17 @@ function Contact() {
 
     const errors = {};
 
-    if (name.length < 3) {
-      errors.name = "Name must be at least 3 characters";
+    if (name.length < 2) {
+      errors.name = "Name must be at least 2 characters";
     }
 
     if (!/^[a-zA-Z0-9._%+-]{3,}@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(email)) {
       errors.email = "Invalid email address";
     }
 
-    if (phone && (phone.length < 10 || phone.length > 10)) {
-      errors.phone = "Phone number must be 10 digits";
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+      errors.phone =
+        "Enter a valid 10-digit Indian mobile number starting with 6-9";
     }
 
     setErrors(errors);
@@ -55,7 +56,7 @@ function Contact() {
         toast.error("An error occurred while sending the email:", error);
       })
       .finally(() => {
-        setIsSubmitting(false);
+        setIsSubmitting(true);
       });
   };
 
@@ -132,8 +133,9 @@ function Contact() {
                   id="phone"
                   className="contact-phone"
                   required
-                  max={10}
-                  min={10}
+                  pattern="[6-9]{1}[0-9]{9}"
+                  title="Enter a valid 10-digit Indian mobile number"
+                  maxLength={10}
                 />
                 {errors.phone && (
                   <div style={{ color: "red" }}>{errors.phone}</div>
